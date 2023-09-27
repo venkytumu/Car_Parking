@@ -1,0 +1,205 @@
+{%load static%}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+
+     <style>
+        footer#Footer.foot {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .contact-details, .social-icons {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .contact-details h3, .social-icons h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-details p {
+    margin: 0;
+  }
+  
+  .social-icons ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icons li {
+    margin: 0 10px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  
+  /* Font Awesome Icons Styles (assuming you're using Font Awesome) */
+  .fa-facebook:before {
+    content: "\f09a"; /* Facebook icon */
+  }
+  
+  .fa-twitter:before {
+    content: "\f099"; /* Twitter icon */
+  }
+  
+  .fa-instagram:before {
+    content: "\f16d"; /* Instagram icon */
+  }
+  
+  /* Add more icon styles as needed for other social media platforms */
+footer#Footer.foot{
+  margin-top: 30px;
+}  
+        
+    </style> 
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'login.CSS' %}">
+
+</head>
+
+<body>
+
+    <section class="pre-hm">
+
+        <nav class="tumu">
+
+          <div class="LOGO">
+
+            <i class="fa-sharp fa-solid fa-p"></i>
+
+
+          </div>
+
+          <div class="navigation">
+
+              <ul>
+
+                  <li><a class="hme" href="{% url 'index' %}">HOME</a></li>
+
+                  <li><a class="abt" href="#">ABOUT</a></li>
+
+                  <!-- <li><a class="lgn" href="ALTLOGIN.HTML" >LOGIN</a></li> -->
+
+                  <li><a  class="cnt"href="#Footer">CONTACT</a></li>
+
+              </ul>
+
+          </div>
+
+        </nav>
+
+    </section>
+
+    <section class="main">
+
+        <div class="login-box">
+
+            <h2>LOGIN </h2>
+
+            <form action="login" method="post">
+                {%csrf_token%}
+                <div class="user-box">
+
+                    <input type="text" name="username" required>
+
+                    <label>Username</label>
+
+                </div>
+
+                <div class="user-box">
+
+                    <input type="password" name="password" class="pass" required>
+
+                    <label>Password</label>
+
+                </div>
+
+                <div class="check">
+
+                    <input type="checkbox" id="passwordshow" class="show">
+
+                    <label for="passwordshow">Show Password</label>
+
+                </div>
+
+                <a><input type="submit" ></a>
+
+                <a href="register">
+
+                    SIGNUP
+
+                </a>
+
+                <center><a href="{% url 'resetlink' %}" id="forgot-password-link">Forgot Password?</a></center>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- <footer class="foot" id="Footer">
+        <div class="container">
+          <div class="contact-details">
+            <h3>Contact Us</h3>
+            <p>Email: example@email.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+            <p>Address: 123 Street, City, Country</p>
+          </div>
+          <div class="social-icons">
+            <h3>Follow Us</h3>
+            <ul>
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+               Add more social media icons as needed -->
+            <!-- </ul>
+          </div>
+        </div>
+      </footer> --> 
+
+    <script > 
+        const show=document.querySelector(".show");
+        const pass=document.querySelector(".pass");
+        show.addEventListener("click",()=>{
+            if(show.checked){
+            pass.setAttribute("type","text");
+            }
+            else{
+                pass.setAttribute("type","password");
+            }
+        })
+    </script>
+
+</body>
+
+</html>
