@@ -1,0 +1,306 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Slot_booking.css' %}">
+    <title>Slot Booking</title>
+</head>
+<body>
+    <section class="pre-hm">
+
+        <nav class="tumu">
+      
+          <div class="LOGO">
+      
+            <i class="fa-sharp fa-solid fa-p "></i>
+      
+        </div>
+      
+          <div class="navigation">  
+      
+           <ul>
+           
+            <li><a class="hme" href="{% url 'index' %}">HOME</a></li>
+            <li><a class="abt" href="#">ABOUT</a></li>
+              
+            {%if user.is_authenticated %}
+
+            <li>Hello, {{user.first_name}}</li>
+            <li><a class="lgn" href="{% url 'logout' %}" >LOGOUT</a></li>
+            {%else%}
+            <li><a class="lgn" href="account/login" >LOGIN</a></li>
+            <li><a  class="cnt"href="INDEX.HTML">CONTACT</a></li>
+            <li class="hamburgericon"><a href="javascript:void(0);" onclick="dropdownmenu()">&#9776</a></li>
+            {%endif%}
+     
+          </ul>
+      
+          </div>
+      
+        </nav>
+      
+        </section>
+
+    <div class="container available_slots">
+        <h1>Available Slots</h1>
+
+        <div class="row datesearch">
+
+          <form  id="search_slot" method="get">
+            {%csrf_token%}
+  
+          <div class="col-4 dateblock">  
+  
+              <label class="datename" for="selected-date"><b>Date</b></label>
+  
+              <input type="date" class="dateinput" id="selected-date" name="selected_date" min=""  required>
+
+              <!-- <input onclick="submit_by_id()"  type="submit" class="submitbutton"> -->
+              <button  class="Show_slots_btn" onclick="submit_by_id(); show_book();"  type="submit">Show Slots</button>
+              
+          </div>  
+  
+        </form>
+
+      </div>
+
+         <div class="slots" style=" justify-content: space-around;
+         margin: 60px;" >
+           
+        </div>
+        <div id="Book_slots_btn" style="display: none;">
+
+            <ul class="required">
+
+                <div class="slot1">
+            
+                    <li>
+            
+                        <div class="slot ">
+        
+                            <div class="space na"></div>
+            
+                            <medium>Avaliable</medium>
+            
+                        </div>
+            
+                    </li>
+            
+                    <li>
+            
+                        <div class="slot occupied">
+            
+                            <div class="space occupied"></div>
+            
+                            <medium>Occupied</medium>
+            
+                        </div>
+            
+                    </li>
+            
+                    <li>
+            
+                        <div class="slot selected">
+            
+                            <div class="space selected"></div>
+            
+                            <medium>Selected</medium>
+            
+                        </div>
+            
+                    </li>
+            
+                </div>
+            
+            </ul>
+
+
+
+
+        <form action="" method="post">
+            {%csrf_token%}
+
+        <button class="Book_slots_btn" type="submit"  >Book Slots</button>
+    </form>
+</div>
+    </div>
+        <footer class="foot" id="foot1">
+
+            <div class="container">
+          
+              <div class="contact-details">
+          
+                <h3>Contact Us</h3>
+          
+                <p>Email: example@email.com</p>
+          
+                <p>Phone: +1 (123) 456-7890</p>
+          
+                <p>Address: 123 Street, City, Country</p>
+          
+              </div>
+          
+              <div class="social-icons">
+          
+                <h3>Follow Us</h3>
+          
+                <ul>
+          
+                  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          
+                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          
+                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          
+                  <!-- Add more social media icons as needed -->
+             </ul>
+          
+              </div>
+          
+            </div>
+          
+           
+          
+          </footer>
+    
+   
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+
+    
+        var datePicker = document.getElementById('selected-date');
+        var slotsContainer = document.querySelector('.slots');
+        var selectedSlot = null;
+        var show_bookslot=document.getElementById('Book_slots_btn');
+        
+        var today = new Date().toISOString().split('T')[0];
+        datePicker.min = today;
+    
+        function validation() {
+            var date = datePicker.value;
+            if (date === '') {
+                alert("Please select a date");
+                return false;
+            } else {
+                return true;
+            }
+        }
+    
+        function fetchSlots(selectedDate) {
+            
+            $.ajax({
+                url: "{% url 'get_slots' %}",
+                method: "GET",
+                data: { selected_date: selectedDate },
+                success: function (data) {
+                    
+                    slotsContainer.innerHTML = '';
+    
+                    
+                    data.slots.forEach(function (slot) {
+                        var slotElement = document.createElement('div');
+                        slotElement.className = "slot";
+                        slotElement.innerHTML = `
+                            <button
+                                class="slot-button ${slot.is_selected ? 'selected' : slot.is_available ? 'available' : 'occupied'}"
+                                data-slotid="${slot.id}"
+                                ${slot.is_selected || !slot.is_available ? 'disabled' : ''}
+                                style="height: 100px; width: 100px;"
+                            >
+                                ${slot.slot_number}
+                            </button>
+                           
+
+                        `;
+                        
+                        slotElement.querySelector('.slot-button').addEventListener('click', function () {
+                            toggleSlot(this);
+                        });
+    
+                        slotsContainer.appendChild(slotElement);
+                    });
+                },
+                error: function () {
+                    alert("An error occurred while fetching slots.");
+                },
+            });
+        }
+    
+        function toggleSlot(slotButton) {
+            // Check if the slot is not occupied and not already selected
+            if (!slotButton.classList.contains('occupied') && !slotButton.classList.contains('selected')) {
+                if (selectedSlot) {
+                    // Deselect the previously selected slot
+                    selectedSlot.classList.remove('selected');
+                }
+                // Select the clicked slot
+                slotButton.classList.add('selected');
+                selectedSlot = slotButton;
+            } else if (slotButton.classList.contains('selected')) {
+                // Deselect the clicked slot
+                slotButton.classList.remove('selected');
+                selectedSlot = null;
+            }
+        }
+
+
+        function show_book(){
+            show_bookslot.style.cssText="display:block;text-align:center;margin-left:0px; padding:15px;";
+        }
+
+
+
+        function submit_by_id() {
+            var date = datePicker.value;
+    
+            if (validation()) {
+                fetchSlots(date);
+                show_book();
+            }
+            event.preventDefault();
+        }
+
+
+
+    
+        var csrfToken = "{{ csrf_token }}";
+                       
+            document.getElementById('Book_slots_btn').addEventListener('click', function () {
+                if (selectedSlot) {
+                    var slotId = selectedSlot.getAttribute('data-slotid');
+                    $.ajax({
+                        url: "{% url 'book_slot' %}",
+                        method: "POST",
+                        headers: {
+                            "X-CSRFToken": csrfToken,
+                        },
+                        data: { slotid: slotId },
+                        success: function (data) {
+                            console.log("3");
+                            if (data.message === "Slot booked successfully.") {
+                                selectedSlot.classList.add('occupied');
+                                selectedSlot.classList.remove('available', 'selected');
+                                selectedSlot.disabled = true;
+                            }
+                            alert(data.message);
+                        },
+                        error: function () {
+                            alert("An error occurred while booking the slot.");
+                        },
+                    });
+                } else {
+                    alert("Please select a slot before booking.");
+                }
+                // Prevent the default form submission
+                event.preventDefault();
+            });
+        
+        
+</script>
+
+</body>
+</html>

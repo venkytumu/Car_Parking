@@ -1,0 +1,324 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow:2px 2px 10px rgba(0,0,0.15) ;
+    padding: 1vw 8vw;
+    position: fixed;
+    width: 100%;
+    background-color:rgb(255, 43, 43);
+    z-index: 100;
+  }
+  
+  nav .navigation{
+    display: flex;
+  }
+  
+  #menu-btn{
+    width: 30px;
+    height: 30px;
+    margin-top: 22px;
+    display: none;
+  }
+  #menu-close{
+    display: none;
+  }
+  
+  nav .navigation ul{
+    display: flex;
+    justify-content: flex-end ;
+    align-items: center;
+  }
+  nav .navigation ul li{
+    list-style: none;
+    margin: 10px;
+  }
+  nav .navigation ul li a{
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+  }
+  nav .navigation ul li a:hover{
+    color: #ffffff;
+  } 
+
+  div.LOGO{
+    color: #ffffff;
+  }
+  #pre-hm .LOGO i{
+    display: fixed;
+    /* flex-direction: column; */
+    color: #ffffff;
+    /* position: absolute; */
+    letter-spacing: 10px;
+  }
+  #Home{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: top 30%;
+    align-items: center;
+  }
+  #Home h2 {
+    color: rgb(5, 5, 5);
+    font-size: 2.26rem;
+    letter-spacing: 1px;
+    padding-top: 120px;
+    text-align: center;
+    line-height: 25px;
+  }
+  #Home p{
+    width: 50%;
+    line-height: 25px;
+    text-align: center;
+    justify-content: center;
+  }
+  .pre-hm a.hme {
+    color: #fff;
+    /* background-color: red; */
+  }
+  .pre-hm a.hme:hover {
+    color:red;
+    background-color:#fff;
+  }
+li.hamburgericon{
+    display: none;
+}
+
+button.Slot_button{
+  text-align: center;
+  
+}
+
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  z-index: 1; 
+  background-color: #fff; 
+  border: 1px solid #ccc; 
+}
+
+.dropdown-menu li {
+  display: flex; 
+  /* padding: ;  */
+  text-align: center;
+  white-space: nowrap; 
+  color: black;
+  background-color: red;
+  align-items: center;
+}
+
+
+
+.dropdown-menu ul li{
+  padding: 8px;
+  border-radius: 7px;
+  color: aqua;
+  background-color: rgb(255, 43, 43);
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+
+
+
+.dropdown-menu ul li:hover {
+  background-color: transaparent;
+  box-shadow: 0 0 12px white;
+
+}
+
+
+/* Active class for the dropdown menu to show it */
+.dropdown-menu.active {
+  display: block;
+}
+
+
+  /* @media screen and (max-width:769px){
+    ul.topnav li{
+        display: none;
+    }
+    ul.topnav li.hamburgericon{
+        display: block;
+        float: right;
+    }
+    
+    ul.topnav.responsive li.hamburgericon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        
+    }
+    ul.topnav.responsive {
+        position: absolute;
+        
+        top: 0;
+        right: 0;
+        width:200px ;
+        height: 100vh;
+        background-color: rgb(255, 43, 43);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    ul.topnav.responsive li {
+        display: inline;
+        /* flex-direction: column; */
+        /* float: none; */
+    /* }
+    ul.topnav.responsive li a {
+        display: block;
+    text-align: left;
+    }
+    nav.tumu{
+        display: absolute;
+        padding: 0px;
+    }
+   
+
+  } */ 
+  /* pre {
+     */
+  /* font-size: 0.9rem};  */
+  
+  /* ############################ New css ############################# */
+  * {box-sizing: border-box;}
+  body {font-family: Verdana, sans-serif;}
+  .mySlides {display: none;}
+  img {vertical-align: middle;}
+  
+  /* Slideshow container */
+  .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+  }
+  
+  /* Caption text */
+  /* .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  } */
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    align-items: center;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .text {font-size: 11px}
+  }
+  /* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .contact-details, .social-icons {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .contact-details h3, .social-icons h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-details p {
+    margin: 0;
+  }
+  
+  .social-icons ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icons li {
+    margin: 0 10px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  
+  /* Font Awesome Icons Styles (assuming you're using Font Awesome) */
+  .fa-facebook:before {
+    content: "\f09a"; /* Facebook icon */
+  }
+  
+  .fa-twitter:before {
+    content: "\f099"; /* Twitter icon */
+  }
+  
+  .fa-instagram:before {
+    content: "\f16d"; /* Instagram icon */
+  }
+  
+  /* Add more icon styles as needed for other social media platforms */
+.foot{
+  margin-top: 30px;
+}  
+

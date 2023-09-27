@@ -1,0 +1,241 @@
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow:2px 2px 10px rgba(0,0,0.15) ;
+    padding: 1vw 8vw;
+    position: absolute;
+    width: 85%;
+    background-color:rgb(255, 43, 43);
+    z-index: 100;
+  }
+  nav .navigation ul{
+    display: flex;
+    justify-content: flex-end ;
+    align-items: center;
+  }
+  nav .navigation ul li{
+    list-style: none;
+    margin: 10px;
+  }
+  nav .navigation ul li a{
+    text-decoration:none;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    font-weight: 500;
+    transition: 0.3s ease;
+  }
+  nav .navigation ul li a:hover{
+    color: #ffffff;
+  }
+  nav .LOGO i{
+    color: #ffffff;
+  }
+  body{
+    width: 100%;
+    height: 100%;
+     background: linear-gradient(rgb(241, 235, 235));
+    font-family: sans-serif;
+}
+
+.main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 1px;
+    background: rgb(255, 43, 43);
+    box-shadow: 0 0 5px rgba(97, 16, 16, 0.5),0 0 25px rgba(97, 16, 16, 0.5),0 0 50px rgba(97, 16, 16, 0.5),0 0 100px rgb(255, 0, 0);
+    border-radius: 10px;
+}
+/* Signup-specific styles */
+
+.signup-box {
+
+    /* Styles for the signup box */
+
+    width: 400px;
+    padding: 40px;
+    background: rgba(235, 14, 14, 0.5);
+    border-radius: 10px;
+}
+.signup-box h2 {
+    /* Styles for the "SIGNUP" heading */
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+
+.signup-box .user-box {
+    /* Styles for user input boxes */
+    position: relative;
+}
+.signup-box .user-box input {
+
+    /* Styles for input fields */
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+}
+
+.signup-box .user-box label {
+
+    /* Styles for input labels */
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+ 
+
+.signup-box .user-box input:focus ~ label,
+
+.signup-box .user-box input:valid ~ label {
+
+    top: -20px;
+
+    left: 0;
+
+    color: #fff;
+
+    font-size: 12px;
+
+}
+
+ 
+
+.signup-box form a {
+
+    /* Styles for the signup button */
+
+    position: relative;
+
+    display: inline-block;
+
+    padding: 10px 26px;
+
+    color: #fff;
+
+    font-size: 16px;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    overflow: hidden;
+
+    transition: .5s;
+
+    margin-top: 40px;
+
+    letter-spacing: 4px;
+
+}
+
+ 
+
+.signup-box a:hover {
+
+    /* Styles for the signup button on hover */
+
+    background: white;
+
+    color: red;
+
+    border-radius: 5px;
+
+    box-shadow: 0 0 5px rgba(196, 201, 196), 0 0 25px rgba(196, 201, 196), 0 0 50px rgba(196, 201, 196), 0 0 100px rgba(196, 201, 196);
+
+}
+
+.signup-box a span {
+    /* Styles for button animation */
+    position: absolute;
+    display: block;
+}
+.signup-box a span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white);
+    animation: btn1 .75s linear infinite;
+    animation-delay: .25s;
+
+}
+
+@keyframes btn1 {
+    0% {
+        left: -100%;
+    }
+    50%, 100% {
+        left: 100%;
+    }
+
+}
+.signup-box a span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, white);
+    animation: btn2 .75s linear infinite;
+    animation-delay: .25s;
+}
+@keyframes btn2 {
+    0% {
+        top: -100%;
+    }
+    50%, 100% {
+        top: 100%;
+    }
+}
+.signup-box a span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white);
+    animation: btn3 .75s linear infinite;
+    animation-delay: .5s;
+}
+@keyframes btn3 {
+    0% {
+        right: -100%;
+    }
+    50%, 100% {
+        right: 100%;
+    }
+
+}
+.signup-box a span:last-child {
+    left: 0;
+    bottom: -100%;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(90deg, transparent, white);
+    animation: btn4 .75s linear infinite;
+    animation-delay: .25s;
+}
+@keyframes btn4 {
+    0% {
+        bottom: -100%;
+    }
+    50%, 100% {
+        bottom: 100%;
+    }
+}

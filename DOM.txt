@@ -1,0 +1,24 @@
+DOM:-
+1.What is DOM?
+2.What is nodes
+
+3.getElementById() method returns an element object that represents an HTML element
+4.getElementByName() method returns a list of nodes.
+5.getElementByTagName() method accepts a tag name and returns a live HTMLCollection of elements.
+6.querySelector() & querySelectorAll()
+	queryselector() metjod allows you to select the first element that matches one or more CSS selectors.
+
+7.appendChild()
+	method to add a node to the end of the list of child nodes of a specified parent node.
+	can be used to move an existing child to the new position witin the document.
+8.textContent
+9.innerText
+10.innerHTML
+11.after()
+	we can usr after() method to insert one ot more nodes after the element.
+		Element.after(node)
+12.append() method
+13.prepand() method
+14.insertAdjacentHTML() method
+	element.insertAdjacentHTML(positionName,text);
+ 
