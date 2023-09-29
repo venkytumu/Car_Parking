@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+    
+            font-family: arial, sans-serif;
+          
+            border-collapse: collapse;
+          
+            width: 100%;
+         
+          }
+          
+          td, th {
+          
+            border: 1px solid #dddddd;
+          
+            text-align: left;
+          
+            padding: 8px;
+          
+          }
+         
+          tr:nth-child(even) {
+          
+            background-color: #dddddd;
+          
+          }
+          
+          body
+          
+              {
+                  counter-reset: Serial;               
+              }   
+              table
+          
+              {      
+                  border-collapse: separate;
+          
+              }
+        
+              tr td:first-child:before
+          
+              {
+          
+                counter-increment: Serial;      
+          
+                content: counter(Serial);
+          
+              }
+              h1{
+                background-color: red;
+                color: white;
+                text-align: center;
+              }
+          
+          
+    </style>
+</head>
+<body>
+    
+
+<h1>Booking History</h1>
+<table>
+    <tr>
+        <th>S.No</th>
+        <th>Slot Number</th>
+        <th>Booking date</th>
+        <th>Created At</th>
+    </tr>
+    {% for booking in historical_bookings %}
+    <tr>
+        <td></td>
+        <td>{{ booking.slot.slot_number }}</td>
+        <td>{{ booking.slot.booking_date }}</td>
+        <td>{{ booking.created_at }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="4">No booking history available.</td>
+    </tr>
+    {% endfor %}
+
+    
+</table>
+
+</body>
+</html>
