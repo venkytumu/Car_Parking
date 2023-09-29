@@ -3,10 +3,11 @@ from .models import Slot, Booking,HistoricalBooking
 from django.contrib.auth.decorators import login_required
 import json
 from django.shortcuts import get_object_or_404
-from datetime import date,timedelta,timezone
+from datetime import date,timedelta,timezone,datetime
 from django.contrib import messages
 from django.http import JsonResponse
 
+present=date.today()
 def slot_list(request):
     now = date.today()
     max_slots_per_day = 10
@@ -45,24 +46,29 @@ def book_slot(request):
         # Check if the slot is available
         if not slot.is_available:
             return HttpResponse(json.dumps({"message": "Slot is already booked."}), content_type="application/json", status=400)
+        
+        booked_slots = Booking.objects.filter(user=user, slot__booking_date=slot.booking_date)
+        if booked_slots.exists():
+            return HttpResponse(json.dumps({"message": "You have already booked a slot for this date."}), content_type="application/json", status=400)
 
+        else:
         # Create a booking record
-        Booking.objects.create(user=user, slot=slot)
+            Booking.objects.create(user=user, slot=slot)
 
-        HistoricalBooking.objects.create(user=user, slot=slot)
+            HistoricalBooking.objects.create(user=user, slot=slot)
 
         # Mark the slot as selected
-        slot.is_available = False
+            slot.is_available = False
         
-        slot.save()
+            slot.save()
         
-        return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
+            return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
         
     return render(request,"Home.html")  
 
 def user_bookings(request):
     
-    user_bookings = Booking.objects.filter(user=request.user)
+    user_bookings = Booking.objects.filter(user=request.user,slot__booking_date__gte=present)
 
     return render(request, 'My_bookings.html', {'user_bookings': user_bookings})
 

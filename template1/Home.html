@@ -23,22 +23,22 @@
     <div class="navigation">  
         <ul class="topnav">
           
-            <li><a class="hme" href="{% url 'index' %}">HOME</a></li>
-            <li><a class="abt" href="#">ABOUT</a></li>
+            <li><a class="hme" href="{% url 'index' %}" title="home">HOME</a></li>
+            <li><a class="abt" href="#" title="about">ABOUT</a></li>
               
             {%if user.is_authenticated %}
 
             <li>Hello, {{user.first_name}}</li>
-            <li><a class="lgn" href="account/logout" >LOGOUT</a></li>
+            <li><a class="lgn" href="account/logout" title="logout">LOGOUT</a></li>
             <li class="profile-icon" id="profile-icon">
-              <a href="#">
-                  <img src="{% static 'user-icon.png' %}" alt="User Profile">
+              <a href="#" title="user Profile">
+                  <img src="{% static 'user-icon.png' %}" alt="user Profile">
               </a>
               <div id="profile-dropdown"  class="dropdown-menu" style="display: none;">
                   <ul class="ddm-dis" >
-                      <li><a href="{%url 'booking_history' %}">Booking History</a></li>
-                      <li><a href="{%url 'user_bookings' %}">My Bookings</a></li>
-                      <li><a href="account/logout">Logout</a></li>
+                      <li><a href="{%url 'booking_history' %}" title="booking History">Booking History</a></li>
+                      <li><a href="{%url 'user_bookings' %}" title="my Bookings">My Bookings</a></li>
+                      <li><a href="account/logout" title="logout">Logout</a></li>
                   </ul>
               </div>
           </li>
@@ -47,15 +47,15 @@
             
 
 
-            <li><a id="login-trigger" href="#">LOGIN</a></li>
+            <li><a id="login-trigger" href="#" title="login">LOGIN</a></li>
                 <div id="login-dropdown" class="dropdown-menu2" style="display: none;">
               <ul>
-                    <li><a href="account/login">User Login</a></li>
-                    <li><a href="#">Admin Login</a></li>
+                    <li><a href="account/login" title="user login">User Login</a></li>
+                    <li><a href="#" title="admin login">Admin Login</a></li>
               </ul>
                 </div>
 
-           <li><a  class="cnt"href="#Footer">CONTACT</a></li>
+           <li><a  class="cnt"href="#Footer" title="contact">CONTACT</a></li>
 
             <!-- <li class="hamburgericon"><a href="javascript:void(0);" onclick="dropdownmenu()">&#9776</a></li> -->
             {%endif%}

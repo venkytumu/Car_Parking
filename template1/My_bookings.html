@@ -81,6 +81,7 @@
 <th>Wanna Cancel</th>
 </tr>
         {% for booking in user_bookings %}
+      
 <tr>
 <td></td>
 <td>{{ booking.slot.slot_number }}</td>
@@ -92,6 +93,7 @@
 <button type="submit">Cancel</button>
 </form></td>
 </tr>
+
         {% endfor %}
 </table>
 </body>

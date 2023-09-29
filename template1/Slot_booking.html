@@ -61,7 +61,7 @@
               <input type="date" class="dateinput" id="selected-date" name="selected_date" min=""  required>
 
               <!-- <input onclick="submit_by_id()"  type="submit" class="submitbutton"> -->
-              <button  class="Show_slots_btn" onclick="submit_by_id(); show_book();"  type="submit">Show Slots</button>
+              <button  class="Show_slots_btn" onclick="submit_by_id()"  type="submit">Show Slots</button>
               
           </div>  
   
@@ -265,6 +265,7 @@
             var date = datePicker.value;
     
             if (validation()) {
+                
                 fetchSlots(date);
                 show_book();
             }
@@ -289,20 +290,26 @@
                         success: function (data) {
                             console.log("3");
                             if (data.message === "Slot booked successfully.") {
+                                console.log("cvacv");
                                 selectedSlot.classList.add('occupied');
                                 selectedSlot.classList.remove('available', 'selected');
                                 selectedSlot.disabled = true;
+
+                                alert(data.message);
+                            window.location.href='{%url "index" %}';  
                             }
-                            alert(data.message);
-                            window.location.href='{%url "index" %}';   
+                             if(data.message === "You have already booked a slot for this date."){
+                                alert(data.message);
+                            }
+                             
                             //window.history.back();                    
                          },
                         error: function () {
-                            alert("An error occurred while booking the slot.");
+                            alert("You have already booked a slot for this date.");
                         },
                     });
                 } else {
-                    alert("Please select a slot before booking.");
+                    alert("Please  select a slot before booking.");
                 }
                 // Prevent the default form submission
                 event.preventDefault();
