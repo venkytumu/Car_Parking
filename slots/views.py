@@ -11,18 +11,20 @@ present=date.today()
 def slot_list(request):
     now = date.today()
     max_slots_per_day = 10
-    for i in range(5):
-        current_date = now + timedelta(days=i)
-        existing_slots = Slot.objects.filter(booking_date=current_date)
-        if existing_slots.count() < max_slots_per_day:
-            slots_to_create = max_slots_per_day - existing_slots.count()
-            for j in range(slots_to_create):
-                Slot.objects.create(
-                    slot_number=j + 1,
-                    is_selected=False,
-                    is_available=True,
-                    booking_date=current_date
-                )
+    for shift in range(1,3):
+        for i in range(5):
+            current_date = now + timedelta(days=i)
+            existing_slots = Slot.objects.filter(booking_date=current_date)
+            if existing_slots.count() < max_slots_per_day:
+                slots_to_create = max_slots_per_day - existing_slots.count()
+                for j in range(slots_to_create):
+                    Slot.objects.create(
+                        slot_number=j + 1,
+                        is_selected=False,
+                        is_available=True,
+                        booking_date=current_date,
+                        shifts=shift
+                    )
 
     return render(request, 'Slot_booking.html')
 
