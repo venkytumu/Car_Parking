@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'car_parking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Car_parking',
+        'NAME': 'Team_spark1',
         'USER':'postgres',
-        'PASSWORD':'Vinay5@reddy',
+        'PASSWORD':'Venky@123',
         'HOST':'localhost'
     }
 }

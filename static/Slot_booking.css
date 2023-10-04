@@ -253,13 +253,18 @@ button#Book_slots_btn.Book_slots_btn{
 }
 input#selected-date.dateinput{
   font-size: 20px;
+  padding: 1px 5px 7px;
 }
 button.Show_slots_btn{
-  padding: 6px 6px 3px 6px;
-  margin-left: 20px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: red;
+  padding: 10px 20px 7px 10px;
+  margin-left: 10px;
 }
 label.datename{
   font-size: 25px;
+  padding-top: 9px;
   
 }
 

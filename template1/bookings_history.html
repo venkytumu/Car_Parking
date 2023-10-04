@@ -3,8 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <title>Document</title>
-    <style>
+<style>
+      
+.tumu{
+
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  box-shadow:2px 2px 10px rgba(0,0,0.15) ;
+
+  padding: 1vw 8vw;
+
+  /* position: absolute; */
+
+  width: 85%;
+
+  background-color:rgb(255, 43, 43);
+
+  z-index: 100;
+
+}
+
+nav .navigation ul{
+
+  display: flex;
+
+  justify-content: flex-end ;
+
+  align-items: center;
+
+}
+
+nav .navigation ul li{
+
+  list-style: none;
+
+  margin: 10px;
+
+}
+
+nav .navigation ul li a{
+
+  text-decoration:none;
+
+  color: rgb(255, 255, 255);
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  transition: 0.3s ease;
+
+}
+
+nav .navigation ul li a:hover{
+
+  color: #ffffff;
+
+}
+
+nav .LOGO i{
+
+  color: #ffffff;
+
+}
         table {
     
             font-family: arial, sans-serif;
@@ -57,11 +128,81 @@
                 color: white;
                 text-align: center;
               }
-          
+              footer {
+                background-color: #333;
+                color: #fff;
+                padding: 20px 0;
+                text-align: center;
+                margin-top: 350px;
+              }
+              
+              .container {
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-start;
+                flex-wrap: wrap;
+              }
+              
+              .contact-details, .social-icons {
+                flex: 1;
+                padding: 10px;
+              }
+              
+              .contact-details h3, .social-icons h3 {
+                font-size: 18px;
+                margin-bottom: 10px;
+              }
+              .contact-details p {
+                margin: 0;
+              }
+              .social-icons ul {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+              }
+              
+              .social-icons li {
+              
+                margin: 0 10px;
+              
+              }
           
     </style>
 </head>
 <body>
+  <section class="pre-hm">
+
+    <nav class="tumu">
+
+      <div class="LOGO">
+
+        <i class="fa-sharp fa-solid fa-p"></i>
+
+
+      </div>
+
+      <div class="navigation">
+
+          <ul>
+
+              <li><a class="hme" href="{% url 'index' %}">HOME</a></li>
+
+              <li><a class="abt" href="#">ABOUT</a></li>
+
+              <!-- <li><a class="lgn" href="ALTLOGIN.HTML" >LOGIN</a></li> -->
+
+              <li><a  class="cnt"href="#Footer">CONTACT</a></li>
+              <li><a class="cnt" href="{% url 'logout' %}">LOGOUT</a></li>
+
+          </ul>
+
+      </div>
+
+    </nav>
+
+</section>
+
     
 
 <h1>Booking History</h1>
@@ -87,6 +228,29 @@
 
     
 </table>
+
+<footer class="foot" id="foot1">
+  <div class="container">
+    <div class="contact-details">
+      <h3>Contact Us</h3>
+      <p>Email: example@email.com</p>
+      <p>Phone: +1 (123) 456-7890</p>
+      <p>Address: 123 Street, City, Country</p>
+    </div>
+    <div class="social-icons">
+      <h3>Follow Us</h3>
+      <ul>
+        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        <!-- Add more social media icons as needed -->
+
+      </ul>
+    </div>
+  </div>
+
+</footer>
+
 
 </body>
 </html>

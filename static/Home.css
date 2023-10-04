@@ -71,7 +71,7 @@ nav{
     color: rgb(5, 5, 5);
     font-size: 2.26rem;
     letter-spacing: 1px;
-    padding-top: 120px;
+    padding-top: 200px;
     text-align: center;
     line-height: 25px;
   }
@@ -95,7 +95,16 @@ li.hamburgericon{
 
 button.Slot_button{
   text-align: center;
+  /* box-shadow: 2px 2px; */
+  border-radius: 4px;
+  background-color: red;
+  padding: 10px 20px;
   
+}
+button.Slot_button a{
+  text-decoration: none;
+  font-weight: 500; 
+  color:blanchedalmond;
 }
 div.dropdown-menu{
       display: flex;
@@ -261,6 +270,8 @@ box-shadow: 0 0 12px white;
     position: absolute;
     top: 0;
   }
+
+  
   
   /* The dots/bullets/indicators */
   .dot {
@@ -354,6 +365,6 @@ footer {
   
   /* Add more icon styles as needed for other social media platforms */
 .foot{
-  margin-top: 30px;
+  margin-top: 150px;
 }  
 
