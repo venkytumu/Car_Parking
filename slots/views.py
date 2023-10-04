@@ -30,7 +30,8 @@ def slot_list(request):
 def get_slots(request):
     if request.method == 'GET':
         selected_date = request.GET.get('selected_date')
-        slots = Slot.objects.filter(booking_date=selected_date)
+        selected_shift=request.GET.get('selected_shift')
+        slots = Slot.objects.filter(booking_date=selected_date,shifts=selected_shift)
         slot_data = [{'id': slot.id, 'slot_number': slot.slot_number, 'is_selected': slot.is_selected, 'is_available': slot.is_available} for slot in slots]
 
         return JsonResponse({'slots': slot_data})
