@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 class Slot(models.Model):
     
     slot_number = models.IntegerField()
-
     is_selected = models.BooleanField(default=False)
     is_available = models.BooleanField(default=True)
     booking_date = models.DateField()
+    shifts = models.IntegerField()
      
 
 class Booking(models.Model):

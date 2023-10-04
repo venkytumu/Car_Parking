@@ -60,6 +60,12 @@
   
               <input type="date" class="dateinput" id="selected-date" name="selected_date" min=""  required>
 
+              <select name="selected_shift" id="P_shifts">
+                <option value="1">Shift-1</option>
+                <option value="2">Shift-2</option>
+                
+              </select>
+
               <!-- <input onclick="submit_by_id()"  type="submit" class="submitbutton"> -->
               <button  class="Show_slots_btn" onclick="submit_by_id()"  type="submit">Show Slots</button>
               
@@ -192,12 +198,12 @@
             }
         }
     
-        function fetchSlots(selectedDate) {
+        function fetchSlots(selectedDate,selectedshift) {
             
             $.ajax({
                 url: "{% url 'get_slots' %}",
                 method: "GET",
-                data: { selected_date: selectedDate },
+                data: { selected_date: selectedDate,selected_shift:selectedshift },
                 success: function (data) {
                     
                     slotsContainer.innerHTML = '';
@@ -263,10 +269,10 @@
 
         function submit_by_id() {
             var date = datePicker.value;
-    
+            var shift = shiftDropdown.value;
             if (validation()) {
                 
-                fetchSlots(date);
+                fetchSlots(date,shift);
                 show_book();
             }
             event.preventDefault();
