@@ -9,6 +9,9 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <title>Signup</title>
 
@@ -42,7 +45,7 @@
 
                 </ul>
 
-                <span class="fa fa-bars"></span>
+                <!-- <span class="fa fa-bars"></span> -->
 
             </div>
 
@@ -58,7 +61,7 @@
 
             <h2>SIGNUP</h2>
 
-            <form action="register" method="post">
+            <form action="register" method="post" name="registration_form">
                 {%csrf_token%}
                 <div class="user-box">
 
@@ -112,14 +115,60 @@
 
                 </div>
 
-                <input type="submit">
+                <input type="submit" name="sub">
 
             </form>
         </div>
 
     </div>
 
+    <footer class="foot" id="foot1">
+
+        <div class="container">
+  
+          <div class="contact-details">
+  
+            <h3>Contact Us</h3>
+  
+            <p>Email: example@email.com</p>
+  
+            <p>Phone: +1 (123) 456-7890</p>
+  
+            <p>Address: 123 Street, City, Country</p>
+  
+          </div>
+  
+          <div class="social-icons">
+  
+            <h3>Follow Us</h3>
+  
+            <ul>
+  
+              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+  
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+  
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+  
+              <!-- Add more social media icons as needed -->
+  
+     
+  
+            </ul>
+  
+          </div>
+  
+        </div>
+  
+     
+  
+      </footer>
+
+
+
     <script src="{%static 'register.js' %}"></script>
+
+ 
 
 </body>
 

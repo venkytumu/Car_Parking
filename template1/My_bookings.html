@@ -13,13 +13,9 @@
         border-collapse: collapse;
       
         width: 100%;
-      
-       
-      
+     
       }
-      
-       
-      
+     
       td, th {
       
         border: 1px solid #dddddd;
@@ -29,9 +25,7 @@
         padding: 8px;
       
       }
-      
-       
-      
+     
       tr:nth-child(even) {
       
         background-color: #dddddd;
@@ -64,7 +58,9 @@
             color: white;
             text-align: center;
           }
-      
+          .cancel-button{
+            cursor: pointer;
+          }
       
 </style>
 </head>
@@ -78,7 +74,8 @@
 <th>S.No</th>
 <th>Slot</th>
 <th>Booking Date</th>
-<th>Wanna Cancel</th>
+<th>Shift</th>
+<th></th>
 </tr>
         {% for booking in user_bookings %}
       
@@ -86,16 +83,40 @@
 <td></td>
 <td>{{ booking.slot.slot_number }}</td>
 <td>{{ booking.slot.booking_date }}</td>
+<td>{{ booking.slot.shifts }}</td>
 
 <td><form method="post" action="{% url 'cancel_slot' booking.slot.id %}">
     {% csrf_token %}
     
-<button type="submit">Cancel</button>
+<button type="submit" class="cancel-button" title="Click here to cancel your slot">Cancel</button>
 </form></td>
 </tr>
 
         {% endfor %}
 </table>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const cancelButtons = document.querySelectorAll(".cancel-button");
+      cancelButtons.forEach((button) => {
+          button.addEventListener("click", function (event) {
+              event.preventDefault();
+              const confirmation = confirm("Do you really want to cancel?");
+              if (confirmation) {
+                  
+                  event.target.closest("form").submit();
+              } else {
+                  
+              }
+          });
+      });
+  });
+  </script>
+
+
+
+
+
 </body>
 
  

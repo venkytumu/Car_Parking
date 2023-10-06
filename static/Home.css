@@ -42,7 +42,15 @@ nav{
     transition: 0.3s ease;
   }
   nav .navigation ul li a:hover{
-    color: #ffffff;
+    background-color: transparent;
+    box-shadow: 
+    0 0 80px white,
+    0 0 20px white,
+    0 0 10px white;
+/*    position: block;*/
+    border-radius: 5px ;
+    padding: 7px;
+      box-sizing: border-box;
   } 
 
   div.LOGO{
@@ -93,9 +101,29 @@ li.hamburgericon{
     display: none;
 }
 
-button.Slot_button{
-  text-align: center;
+  button.Slot_button{
+
+    text-align: center;
   
+    /* box-shadow: 2px 2px; */
+  
+    border-radius: 4px;
+  
+    background-color: red;
+  
+    padding: 10px 20px;
+  
+   
+  
+  }
+  
+  button.Slot_button a{
+  
+    text-decoration: none;
+  
+    font-weight: 500;
+  
+    color:blanchedalmond;
 }
 div.dropdown-menu{
       display: flex;
@@ -175,11 +203,11 @@ transition: background-color 0.3s ease;
 width: 100%;
 }
 
-.dropdown-menu2 ul li:hover {
+/* .dropdown-menu2 ul li:hover {
 background-color: transaparent;
 box-shadow: 0 0 12px white;
 
-}
+} */
 
   /* @media screen and (max-width:769px){
     ul.topnav li{

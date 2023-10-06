@@ -1,16 +1,15 @@
-// Get references to the form elements
 
-const FirstNameInput = document.querySelector('input[name="first name"]');
-const LastNameInput = document.querySelector('input[name="last name"]');
+const FirstNameInput = document.querySelector('input[name="first_name"]');
+const LastNameInput = document.querySelector('input[name="last_name"]');
 
-const UsernameInput = document.querySelector('input[name="Username"]');
+const UsernameInput = document.querySelector('input[name="username"]');
 const emailInput = document.querySelector('input[name="email"]');
 
-const passwordInput = document.querySelector('input[name="password"]');
+const passwordInput = document.querySelector('input[name="password1"]');
 
-const confirmPasswordInput = document.querySelector('input[name="confirm_password"]');
+const confirmPasswordInput = document.querySelector('input[name="password2"]');
 
-const signupButton = document.querySelector('.signup-box form a');
+const signupButton = document.querySelector('input[name="sub"]');
 
  
 
@@ -29,6 +28,9 @@ function validateForm() {
     const password = passwordInput.value;
 
     const confirmPassword = confirmPasswordInput.value;
+    const lengthRegex = /^.{4,20}$/;
+    const characterSetRegex = /^[a-zA-Z0-9_-]+$/;
+    // const reservedWords = ["admin", "root", "guest"]; 
 
  
 
@@ -40,54 +42,83 @@ function validateForm() {
 
     }
 
+
+    if (!lengthRegex.test(Username)) {
+        alert("Username must be between 4 and 20 characters.");
+        return false;
+    } 
+    
+    if (!characterSetRegex.test(Username)) {
+        alert("Username contains invalid characters.");
+        return false;
+    } 
+    
+   //
+    
+    if (!/^[A-Za-z]/.test(Username)) {
+        alert('Username must start with a letter');
+        return false;
+        
+    } 
+    
+    if (!/[0-9]/.test(Username)) {
+        alert('Username must contain atleast one number');
+        return false;
+    }
+    
  
-
-    if (password !== confirmPassword) {
-
-        alert('Passwords do not match. Please try again.');
-
+    
+    if (password.length < 8){
+        alert('Password should have a minimum length of 8 combinational characters');
+        return false;
+    }
+    
+    if (!/[A-Z]/.test(password)){
+        alert('Password must include at least one uppercase letter.');
         return false;
 
     }
+    
+    if (!/[a-z]/.test(password)){
+        alert('Password must include at least one lowercase letter.');
+        return false; 
+        
+    }
+    
+    if (!/[0-9]/.test(password)){
+        alert('Password must include at least one number');
+        return false;
+    } 
+    
+    if (!/[!@#$%^&*]/.test(password)){
+        alert('Password must include at least one special character.');
+        return false;
+    }
+    
+    if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return false;
+    }
+    
+    if (!email.endsWith("@gmail.com")) {
+            // Email does not contain the required domain
+        alert('Email address must end with @gmail.com.');
+        return false;
 
- 
-
-    // Add additional validation logic as needed
-
- 
+    } 
 
     return true;
 
 }
 
- 
+document.querySelector('form[name="registration_form"]').addEventListener('submit', function (e) {
+    const isFormValid = validateForm(); // Store the result of validateForm in a variable
 
-// Event listener for the signup button
-
-signupButton.addEventListener('click', (e) => {
-
-    e.preventDefault();
-
-   
-
-    if (validateForm()) {
-
-        // Perform signup process here, e.g., send data to the server
-
-        // You can add an AJAX request or any other logic for signup
-
-       
-
-        // For demonstration purposes, we'll just alert a success message
-
-        alert('Signup successful!');
-
-       
-
-        // You can also redirect the user to a different page after successful signup
-
-        // Example: window.location.href = 'success.html';
-
+    if (!isFormValid) {
+        e.preventDefault(); // Prevent the form from submitting
     }
-
+    
+    if (isFormValid) { // Check the stored variable for validation
+        alert(`Hey ${FirstNameInput.value.trim()}, Your Signup is successfull`);
+    }
 });

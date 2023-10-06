@@ -31,11 +31,19 @@
             {%if user.is_authenticated %}
 
             <li>Hello, {{user.first_name}}</li>
-            <li><a class="lgn" href="{% url 'logout' %}" >LOGOUT</a></li>
-            {%else%}
-            <li><a class="lgn" href="account/login" >LOGIN</a></li>
-            <li><a  class="cnt"href="INDEX.HTML">CONTACT</a></li>
-            <li class="hamburgericon"><a href="javascript:void(0);" onclick="dropdownmenu()">&#9776</a></li>
+            <!-- <li><a class="lgn" href="{% url 'logout' %}" >LOGOUT</a></li> -->
+            <li class="profile-icon" id="profile-icon">
+                <a href="#" title="user Profile">
+                    <img src="{% static 'user-icon.png' %}" alt="user Profile">
+                </a>
+                <div id="profile-dropdown"  class="dropdown-menu" style="display: none;">
+                    <ul class="ddm-dis" >
+                        <li><a href="{%url 'booking_history' %}" title="booking History">Booking History</a></li>
+                        <li><a href="{%url 'user_bookings' %}" title="my Bookings">Active Bookings</a></li>
+                        <li><a href="{%url 'logout'%}" title="logout">Logout</a></li>
+                    </ul>
+                </div>
+            </li>
             {%endif%}
      
           </ul>
@@ -49,6 +57,8 @@
     <div class="container available_slots">
         <h1>Available Slots</h1>
 
+        <small>(Please select date and shift to preveiw/make your bookings.The shift timings are Shift-1:(9:30 to 17:30) and shift-2:(18:00 to 02:00))</small><br><br>
+
         <div class="row datesearch">
 
           <form  id="search_slot" method="get">
@@ -60,7 +70,7 @@
   
               <input type="date" class="dateinput" id="selected-date" name="selected_date" min=""  required>
 
-              <select name="selected_shift" id="P_shifts">
+              <select class="Shift" name="selected_shift" id="P_shifts">
                 <option value="1">Shift-1</option>
                 <option value="2">Shift-2</option>
                 
@@ -322,7 +332,34 @@
                 event.preventDefault();
             });
         
-        
+            $(document).ready(function() {
+                console.log("Click event listener is active."); 
+              
+                
+                function hideDropdown() {
+                    console.log("Clicked or scrolled"); 
+                    $(".dropdown-menu").hide();
+                }
+              
+                
+                $(".profile-icon").click(function(event) {
+                    event.stopPropagation(); 
+                    console.log("Clicked"); 
+                    
+                    $(".dropdown-menu").toggle();
+                });
+              
+                
+                $(document).click(function() {
+                    hideDropdown();
+                });
+              
+                
+                $(window).scroll(function() {
+                    hideDropdown();
+                });
+            });
+              
 </script>
 
 </body>

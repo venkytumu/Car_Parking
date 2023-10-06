@@ -87,7 +87,15 @@ nav .navigation ul li a{
 
 nav .navigation ul li a:hover{ 
 
-   color: #ffffff; 
+  background-color: transparent;
+  box-shadow: 
+  0 0 80px white,
+  0 0 20px white,
+  0 0 10px white;
+/*    position: block;*/
+  border-radius: 5px ;
+  padding: 7px;
+    box-sizing: border-box;
 
  } 
 
@@ -248,15 +256,33 @@ div.container.available_slots{
   
 }
 
-button#Book_slots_btn.Book_slots_btn{
+.Book_slots_btn{
+
   text-align: center;
+
+  border-radius: 4px;
+
+  background-color: red;
+
+  padding: 9px 20px 5px 20px;
+
+  margin-left: 10px;
+
 }
 input#selected-date.dateinput{
   font-size: 20px;
+  padding: 1.9px;
+  
 }
+
 button.Show_slots_btn{
-  padding: 6px 6px 3px 6px;
-  margin-left: 20px;
+
+  text-align: center;
+  border-radius: 4px;
+  background-color: red;
+  padding: 9px 20px 5px 20px;
+  margin-left: 10px;
+
 }
 label.datename{
   font-size: 25px;
@@ -301,4 +327,47 @@ label.datename{
 button.slot-button.available{
   margin-left: 10px;
   border-radius: 10px;
+}
+.Shift{
+  padding: 9px 7px 6px 7px;
+}
+div.dropdown-menu{
+  display: flex;
+  align-items:flex-start;
+  flex-direction: column;
+  position: fixed;
+  top: 5rem;
+  right: 1rem;
+  border-radius: 10px;
+  padding: 10px 35px 1px 10px;
+  background-color: rgb(255, 43, 43);
+}
+
+.dropdown-menu ul{
+display: flex;
+align-items:flex-start;
+flex-direction: column;
+position: fixed;
+top: 5rem;
+right: 1rem;
+border-radius: 10px;
+padding: 10px 35px 1px 10px;
+background-color: rgb(255, 43, 43);
+}
+
+
+
+.dropdown-menu ul li{
+padding: 8px;
+border-radius: 7px;
+color: aqua;
+background-color: rgb(255, 43, 43);
+transition: background-color 0.3s ease;
+width: 100%;
+}
+
+.dropdown-menu ul li:hover {
+background-color: transaparent;
+box-shadow: 0 0 12px white;
+
 }
