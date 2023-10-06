@@ -94,5 +94,5 @@ def cancel_slot(request, slot_id):
     
 def booking_history(request):
   
-    historical_bookings = HistoricalBooking.objects.all()
+    historical_bookings = HistoricalBooking.objects.filter(user=request.user)
     return render(request, 'bookings_history.html', {'historical_bookings': historical_bookings})

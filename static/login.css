@@ -13,7 +13,7 @@ nav{
 
     padding: 1vw 8vw;
 
-    position: absolute;
+   
 
     width: 85%;
 
@@ -57,7 +57,15 @@ nav{
 
   nav .navigation ul li a:hover{
 
-    color: #ffffff;
+    background-color: transparent;
+    box-shadow: 
+    0 0 80px white,
+    0 0 20px white,
+    0 0 10px white;
+/*    position: block;*/
+    border-radius: 5px ;
+    padding: 7px;
+      box-sizing: border-box;
 
   }
 
