@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect, HttpResponse
+
 from .models import Slot, Booking,HistoricalBooking
 from django.contrib.auth.decorators import login_required
 import json
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404,render,HttpResponse,redirect
 from datetime import date,timedelta,timezone,datetime
 from django.contrib import messages
 from django.http import JsonResponse

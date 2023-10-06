@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'Home.apps.HomeConfig',
     'account.apps.AccountConfig',
     'slots.apps.SlotsConfig',
@@ -40,8 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
+ ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": " Admin Panel",
+    "site_header": " Admin Panel",
+    "welcome_sign": "Welcome to the  Admin Panel",
+    "show_sidebar": True,
+    "navigation_expanded": False,
+    "search_model": "auth.User",
+    "search_model_admin": "auth.UserAdmin",
+    "changeform_format": "horizontal_tabs",
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Car_parking',
         'USER':'postgres',
-        'PASSWORD':'Vinay5@reddy',
+        'PASSWORD':'branta@112',
         'HOST':'localhost'
     }
 }
