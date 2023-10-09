@@ -14,7 +14,7 @@ def slot_list(request):
     for shift in range(1,3):
         for i in range(5):
             current_date = now + timedelta(days=i)
-            existing_slots = Slot.objects.filter(booking_date=current_date)
+            existing_slots = Slot.objects.filter(booking_date=current_date,shifts=shift)
             if existing_slots.count() < max_slots_per_day:
                 slots_to_create = max_slots_per_day - existing_slots.count()
                 for j in range(slots_to_create):

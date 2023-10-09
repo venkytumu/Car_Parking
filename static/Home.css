@@ -138,7 +138,19 @@ div.dropdown-menu{
  
 }
 
-
+button.Slot_button{
+  text-align: center;
+  /* box-shadow: 2px 2px; */
+  border-radius: 4px;
+  background-color: red;
+  padding: 10px 20px;
+  
+}
+button.Slot_button a{
+  text-decoration: none;
+  font-weight: 500; 
+  color:blanchedalmond;
+}
 
 div.dropdown-menu2{
   display: flex;
@@ -357,3 +369,32 @@ footer {
   margin-top: 30px;
 }  
 
+/* Mobile Styles */
+@media (max-width: 768px) {
+  /* Adjust the layout for smaller screens */
+  body {
+    font-size: 16px; /* Increase font size for better readability */
+  }
+
+  .mobile-menu {
+    display: block; /* Show the mobile menu icon */
+  }
+
+  .topnav {
+    display: none; /* Hide the navigation links by default */
+    flex-direction: column; /* Stack links vertically */
+  }
+
+  /* Style the hamburger menu icon */
+  .mobile-menu i {
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Show the navigation links when the menu icon is clicked */
+  .topnav.show {
+    display: flex;
+  }
+
+  /* Add additional mobile-specific styles here */
+}

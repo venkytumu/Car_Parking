@@ -9,6 +9,8 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
   <link rel="stylesheet" href="{% static 'Home.css' %}">
   <title>Document</title>
@@ -38,6 +40,7 @@
                   <ul class="ddm-dis" >
                       <li><a href="{%url 'booking_history' %}" title="booking History">Booking History</a></li>
                       <li><a href="{%url 'user_bookings' %}" title="my Bookings">My Bookings</a></li>
+                      <li><a >Notifications</a></li>
                       <li><a href="account/logout" title="logout">Logout</a></li>
                   </ul>
               </div>
@@ -57,37 +60,23 @@
 
            <li><a  class="cnt"href="#Footer" title="contact">CONTACT</a></li>
 
-            <!-- <li class="hamburgericon"><a href="javascript:void(0);" onclick="dropdownmenu()">&#9776</a></li> -->
+            
             {%endif%}
         </ul>
-        <!-- <img  id="menu-btn" src="/IMAGES/menu.png" alt="" > -->
+        
     </div>
   </nav>
   </section>
-  <!-- <script>
-    function dropdownmenu(){
-     var x = document.getElementById("dropdown");
-      if (x.className === "topnav" ){
-        x.className += " responsive" ;
-      }
-      else {
-       x.className="topnav";
-      }
-    }
-   
-  </script> -->
+ 
   <section id="Home">
     <h2>PARKING SLOT BOOKING</h2>
     {%if user.is_authenticated %}
     <div>
-      <button class="Slot_button" style="box-shadow: 2px 2px;
-      background-color: red;"><a href="slots/slot_list" style="text-decoration: none;
-        font-weight: 500; color:blanchedalmond">Book Slot</a></button><br>
+      <button class="Slot_button"><a href="slots/slot_list">Book Slot</a></button><br>
       
     </div>
     {%endif%}
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Users will be able to know whether there are spaces available or not and if there are a space available for their vehicles, they can reserve the slot right away</p>
     <div class="Sl_IMAGE">
       <div class="slideshow-container">
 

@@ -13,7 +13,7 @@ nav{
 
     padding: 1vw 8vw;
 
-    position: absolute;
+    
 
     width: 85%;
 
@@ -536,3 +536,46 @@ footer#Footer.foot {
 footer#Footer.foot{
   margin-top: 30px;
 }  
+
+
+
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  /* Adjust the layout for smaller screens */
+  .mobile-container {
+    padding: 20px; /* Add some spacing around the content */
+  }
+
+  /* Center-align the login box */
+  .login-box {
+    margin: 0 auto;
+  }
+
+  /* Center-align the form inputs */
+  .user-box input[type="text"],
+  .user-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Adjust the checkbox label position */
+  .check {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* Center-align the submit and signup buttons */
+  .user-box a,
+  #forgot-password-link {
+    text-align: center;
+    display: block;
+  }
+
+  /* Adjust footer styles for mobile */
+  .foot {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px; /* Add margin to the top of the footer */
+  }
+}
