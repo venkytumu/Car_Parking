@@ -7,6 +7,7 @@ from datetime import date,timedelta,timezone,datetime
 from django.contrib import messages
 from django.http import JsonResponse
 
+
 present=date.today()
 def slot_list(request):
     now = date.today()
@@ -55,6 +56,8 @@ def book_slot(request):
             return HttpResponse(json.dumps({"message": "You have already booked a slot for this date."}), content_type="application/json", status=400)
 
         else:
+
+
         # Create a booking record
             Booking.objects.create(user=user, slot=slot)
 
