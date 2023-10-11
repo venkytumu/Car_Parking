@@ -36,7 +36,7 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 INSTALLED_APPS = [
     'jazzmin',
-    'import_export',
+    # 'import_export',
     'django_admin_logs',
     'Home.apps.HomeConfig',
     'account.apps.AccountConfig',
