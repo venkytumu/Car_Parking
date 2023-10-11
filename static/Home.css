@@ -11,6 +11,7 @@ nav{
     z-index: 100;
     top: 0;
     right: 0;
+
   }
   
   nav .navigation{
@@ -43,17 +44,20 @@ nav{
     font-weight: 500;
     transition: 0.3s ease;
   }
-  nav .navigation ul li a:hover{
-    background-color: transparent;
+  /* nav .navigation ul li a:hover{
+    /* background-color: transparent;
     box-shadow: 
     0 0 80px white,
     0 0 20px white,
     0 0 10px white;
-/*    position: block;*/
+    position: block;
     border-radius: 5px ;
     padding: 7px;
-    box-sizing: border-box;
-  } 
+      box-sizing: border-box; */
+    /* background-color: white; 
+
+  }  */
+
 
   div.LOGO{
     color: #ffffff;
@@ -162,11 +166,11 @@ div.dropdown-menu{
   width: 100%;
 }
 
-.dropdown-menu ul li:hover {
+/* .dropdown-menu ul li:hover {
   background-color: transaparent;
   box-shadow: 0 0 12px white;
  
-}
+} */
 
 
 
@@ -387,3 +391,44 @@ footer {
   margin-top: 30px;
 }  
 
+#notification-menu{
+  display: flex;
+align-items:flex-start;
+flex-direction: column;
+position: fixed;
+top: 5rem;
+right: 1rem;
+border-radius: 10px;
+padding: 10px 35px 1px 10px;
+background-color: rgb(255, 43, 43);
+}
+
+ul.notification-list{
+  padding: 1px;
+  background: rgb(255, 43, 43);
+  border-radius: 5px;
+  flex-direction: column;
+} 
+div#notification-menu.dropdown_menu{
+  width: 200px;
+  padding: 5px;
+  box-shadow: 2px 2px black;
+}
+li.noti{
+  color: white;
+  padding: 2px;
+  font-size: small;
+  background: tomato;
+  border-radius: 5px;
+  margin: 5px 10px;
+
+}
+a#clear-notifications-btn{
+  font-size: 12px;
+  text-decoration: underline;
+  margin-left: 14px;
+}
+
+span.notification-count{
+  color: white;
+}

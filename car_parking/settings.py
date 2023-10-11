@@ -24,13 +24,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
+#SECRET_KEY = 'django-insecure-q(n%+41+-6edc&8szsmg^i-m9yr+-4+426!z!&(9xq=!x4(25r'
+
 #'django-insecure-q(n%+41+-6edc&8szsmg^i-m9yr+-4+426!z!&(9xq=!x4(25r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG","False").lower() == "true"
 
+#DEBUG= True
+
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
-#ALLOWED_HOSTS=[]
+# ALLOWED_HOSTS=[]
 
 # Application definition
 
@@ -102,18 +106,17 @@ WSGI_APPLICATION = 'car_parking.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Car_parking',
+        'NAME': 'new_one',
         'USER':'postgres',
         'PASSWORD':'Vinay5@reddy',
         'HOST':'localhost'
     }
 }
-database_url=os.environ.get("DATABASE_URL")
 
+database_url=os.environ.get("DATABASE_URL")
 DATABASES['default']=dj_database_url.parse(database_url)
 
-#"postgres://dep_1_user:UUr6pssVAylI1epo4RZC2JFKPEFWnzxE@dpg-ckif5domccbs738a6ol0-a.oregon-postgres.render.com/dep_1"
-
+#postgres://dep_2_user:jNmVEvoAz5kbgS4T8YlISif4wtxqzvyG@dpg-ckjagqglk5ic73dnee3g-a.oregon-postgres.render.com/dep_2
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 

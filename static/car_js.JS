@@ -19,27 +19,32 @@ function showSlides() {
   setTimeout(showSlides, 2000); 
 }
 
+// var unreadNotificationsCount = 3;
+// function updateNotificationCount() {
+//   $('.notification-count').text(unreadNotificationsCount);
+// }
+
 function getCSRFToken() {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        if (cookie.startsWith('csrftoken=')) {
-            return cookie.substring('csrftoken='.length, cookie.length);
-        }
-    }
-    return '';
+  var cookies = document.cookie.split(';');
+  for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].trim();
+      if (cookie.startsWith('csrftoken=')) {
+          return cookie.substring('csrftoken='.length, cookie.length);
+      }
   }
+  return '';
+}
 
-$(document).ready(function() {
+$(document).ready(function() { 
 
-    function updateNotificationCount() {
-        // Fetch the unread notifications count from the server and update the count
-        $.get("slots/get_unread_notification_count", function(data) {
-            var unreadNotificationsCount = data.count;
-            $('.notification-count').text(unreadNotificationsCount);
-        });
-    }
-    updateNotificationCount();
+  function updateNotificationCount() {
+    // Fetch the unread notifications count from the server and update the count
+    $.get("slots/get_unread_notification_count", function(data) {
+        var unreadNotificationsCount = data.count;
+        $('.notification-count').text(unreadNotificationsCount);
+    });
+}
+updateNotificationCount();
     $("#notification-trigger").click(function(e) {
         e.preventDefault();
         $.get("slots/list_notifications", function(response) {
@@ -91,21 +96,18 @@ $(document).ready(function() {
               updateNotificationCount();
           }
       });
-  } 
-    
-      
+  }
+
       function hideDropdown() {
-          console.log("Clicked or scrolled"); 
+          
           $(".dropdown-menu").hide();
           $("#notification-menu").hide();
       }
-    
-      
+     
       $(".profile-icon").click(function(event) {
-          event.stopPropagation();       
+          event.stopPropagation();          
           $(".dropdown-menu").toggle();
       });
-    
       
       $(document).click(function() {
           hideDropdown();
@@ -127,8 +129,8 @@ document.addEventListener("DOMContentLoaded", function () {
     
      
     
-        loginTrigger.addEventListener("click", function (e) {
-            e.preventDefault();
+        loginTrigger.addEventListener("click", function (event) {
+            event.preventDefault();
             if (loginDropdown.style.display === "block"|| loginDropdown.style.display === "") {
                 loginDropdown.style.display = "none";
             } else {
@@ -151,3 +153,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
   });
+
+  
