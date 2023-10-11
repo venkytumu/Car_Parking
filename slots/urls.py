@@ -16,5 +16,14 @@ urlpatterns = [
     path("cancel_slot/<int:slot_id>/", views.cancel_slot, name='cancel_slot'),
 
     path("booking_history", views.booking_history, name='booking_history'),
+
+    path("list_notifications", views.list_notifications, name='list_notifications'),
+
+    path("mark_notification_as_read", views.mark_notification_as_read, name='mark_notification_as_read'),
+
+    path("clear_all_notifications", views.clear_all_notifications, name='clear_all_notifications'),
+
+    path("get_unread_notification_count", views.get_unread_notification_count, name='get_unread_notification_count'),
+
     # path("logout",views.logout,name="logout")
 ]

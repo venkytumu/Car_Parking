@@ -17,7 +17,8 @@
   <section class="pre-hm">
   <nav class="tumu">
     <div class="LOGO">
-      <i class="fa-sharp fa-solid fa-p "></i>
+      <!-- <i class="fa-sharp fa-solid fa-p "></i> -->
+      <img src="{%static 'PRFT-img-logo.png'%}" alt="Perficient" style="width: 50px; height:50px; padding:5px; background:white; border-radius:2px ;">
     
   </div>
     <div class="navigation">  
@@ -42,6 +43,26 @@
                   </ul>
               </div>
           </li>
+
+          <li class="notification-dropdown">
+            <a href="#" id="notification-trigger" title="notifications"><i class="fa fa-bell fa-2x"></i></a>
+            <span class="notification-count"></span>
+            <div id="notification-menu" class="dropdown_menu" style="display: none;">
+
+              <ul class="notification-list">
+                <!-- Notification items go here dynamically -->
+              </ul>
+              <hr>
+
+              <ul class="clear-notifications-item">
+                <a href="#" id="clear-notifications-btn">...Clear Notifications</a>
+              </ul>
+            </div>
+            <!-- <button id="clear-notifications-btn">Clear Notifications</button> -->
+            
+
+          </li>
+
             {%else%}
             <!-- <li><a class="lgn" href="account/login" >LOGIN</a></li> -->
             

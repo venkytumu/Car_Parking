@@ -19,21 +19,90 @@ function showSlides() {
   setTimeout(showSlides, 2000); 
 }
 
+function getCSRFToken() {
+    var cookies = document.cookie.split(';');
+    for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        if (cookie.startsWith('csrftoken=')) {
+            return cookie.substring('csrftoken='.length, cookie.length);
+        }
+    }
+    return '';
+  }
 
 $(document).ready(function() {
-      console.log("Click event listener is active."); 
+
+    function updateNotificationCount() {
+        // Fetch the unread notifications count from the server and update the count
+        $.get("slots/get_unread_notification_count", function(data) {
+            var unreadNotificationsCount = data.count;
+            $('.notification-count').text(unreadNotificationsCount);
+        });
+    }
+    updateNotificationCount();
+    $("#notification-trigger").click(function(e) {
+        e.preventDefault();
+        $.get("slots/list_notifications", function(response) {
+          // Update the dropdown content with the received data
+          var notification_data = response.notifications;
+          //console.log("hs ");
+          var notificationList = $(".notification-list");
+          notificationList.empty();
+
+          for (var i = 0; i < notification_data.length; i++) {
+            var notificationMessage = notification_data[i].message;
+            var notificationItem = $("<li class='noti'>").text(notificationMessage);
+            notificationList.append(notificationItem);
+        }
+         $("#notification-menu").toggle();
+
+         markAllNotificationsAsRead();
+
+         updateNotificationCount();
+          //console.log("uhgc gag a ");
+        });
+      });
+
+      $("#clear-notifications-btn").click(function(e) {
+
+        e.preventDefault();
+        // Add logic here to clear notifications (e.g., make an AJAX request)
+        var csrfToken = getCSRFToken();
+        $.ajax({
+            url: "slots/clear_all_notifications",
+            type: "POST",
+            headers: { "X-CSRFToken": csrfToken },
+            success: function() {
+                // After clearing notifications, update the notification count
+                updateNotificationCount();
+                //$("#notification-menu").hide();
+            }
+        });
+    });
+
+    function markAllNotificationsAsRead() {
+      var csrfToken = getCSRFToken();
+      $.ajax({
+          url: "slots/mark_notification_as_read",
+          type: "POST",
+          headers: { "X-CSRFToken": csrfToken },
+          success: function() {
+              // After marking all notifications as read, update the notification count
+              updateNotificationCount();
+          }
+      });
+  } 
     
       
       function hideDropdown() {
           console.log("Clicked or scrolled"); 
           $(".dropdown-menu").hide();
+          $("#notification-menu").hide();
       }
     
       
       $(".profile-icon").click(function(event) {
-          event.stopPropagation(); 
-          console.log("Clicked"); 
-          
+          event.stopPropagation();       
           $(".dropdown-menu").toggle();
       });
     

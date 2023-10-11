@@ -13,11 +13,22 @@ class Slot(models.Model):
 class Booking(models.Model):
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     slot = models.ForeignKey(Slot, on_delete=models.CASCADE)
-    booking_date = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    booking_date = models.DateField()
+    slot_number = models.IntegerField()
+    shifts = models.IntegerField()
    
 class HistoricalBooking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     slot = models.ForeignKey(Slot, on_delete=models.CASCADE) 
     created_at = models.DateTimeField(auto_now_add=True)
+    booking_date = models.DateField()
+    slot_number = models.IntegerField()
+    shifts = models.IntegerField()
+
+class Notification(models.Model):
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    read = models.BooleanField(default=False)
     
 

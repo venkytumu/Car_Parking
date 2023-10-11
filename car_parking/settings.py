@@ -36,6 +36,8 @@ ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 INSTALLED_APPS = [
     'jazzmin',
+    'import_export',
+    'django_admin_logs',
     'Home.apps.HomeConfig',
     'account.apps.AccountConfig',
     'slots.apps.SlotsConfig',
@@ -46,7 +48,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+DJANGO_ADMIN_LOGS_ENABLED = True
 
+DJANGO_ADMIN_LOGS_DELETABLE = False
+
+JAZZMIN_SETTINGS = {
+    "changeform_format": "carousel",
+    "site_title": " Admin Login",
+    "site_header": "Welcome to admin site",
+    "site_logo":"PRFT-img-logo.png",
+    "site_brand": "Admin Login",
+    "login_logo_dark": True,
+    "site_logo_classes": "img-circle",
+    "site_icon": None,
+    "welcome_sign": "Welcome to the Admin Login",
+    "copyright": "Admin Login Ltd",
+    "show_ui_builder": True,
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
