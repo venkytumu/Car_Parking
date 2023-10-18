@@ -167,6 +167,7 @@ h1 {
 /* Style for occupied slots */
 .slot-button.occupied {
   background-color: #e74c3c;
+  border-radius: 10px;
 }
 
 /* Style for selected slots */
@@ -267,6 +268,8 @@ div.container.available_slots{
   padding: 9px 20px 5px 20px;
 
   margin-left: 10px;
+
+  
 
 }
 input#selected-date.dateinput{

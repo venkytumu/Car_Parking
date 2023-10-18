@@ -34,7 +34,7 @@ DEBUG = os.environ.get("DEBUG","False").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
-# ALLOWED_HOSTS=[]
+#ALLOWED_HOSTS=[]
 
 # Application definition
 
@@ -116,6 +116,8 @@ DATABASES = {
 database_url=os.environ.get("DATABASE_URL")
 DATABASES['default']=dj_database_url.parse(database_url)
 
+#DATABASES['default']=dj_database_url.parse("postgres://dep_2_user:jNmVEvoAz5kbgS4T8YlISif4wtxqzvyG@dpg-ckjagqglk5ic73dnee3g-a.oregon-postgres.render.com/dep_2")
+
 #postgres://dep_2_user:jNmVEvoAz5kbgS4T8YlISif4wtxqzvyG@dpg-ckjagqglk5ic73dnee3g-a.oregon-postgres.render.com/dep_2
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -161,3 +163,10 @@ STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'vinay5kumarreddynla@gmail.com'
+EMAIL_HOST_PASSWORD = 'xaeg btky rpia otvb'

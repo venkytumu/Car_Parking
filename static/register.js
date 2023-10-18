@@ -49,7 +49,7 @@ function validateForm() {
     } 
     
     if (!characterSetRegex.test(Username)) {
-        alert("Username contains invalid characters.");
+        alert("Username contains invalid characters like @, $, +, %, and _.");
         return false;
     } 
     

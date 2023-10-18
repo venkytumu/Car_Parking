@@ -44,14 +44,10 @@
       
           }
     
-          tr td:first-child:before
-      
-          {
-      
-            counter-increment: Serial;      
-      
-            content: counter(Serial);
-      
+          tr td:first-child:before      
+          {      
+            counter-increment: Serial;            
+            content: counter(Serial);      
           }
           h1{
             background-color: red;
@@ -61,7 +57,39 @@
           .cancel-button{
             cursor: pointer;
           }
-      
+          footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 530px;
+          }
+          .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+          }
+          .contact-details, .social-icons {
+            flex: 1;
+            padding: 10px;
+          }
+          .contact-details h3, .social-icons h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+          .contact-details p {
+            margin: 0;
+          }
+          .social-icons ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+          }
+          .social-icons li {
+            margin: 0 10px;
+          }
 </style>
 </head>
 
@@ -94,6 +122,27 @@
 
         {% endfor %}
 </table>
+
+<footer class="foot" id="foot1">
+  <div class="container">
+    <div class="contact-details">
+      <h3>Contact Us</h3>
+      <p>Email: example@email.com</p>
+      <p>Phone: +1 (123) 456-7890</p>
+      <p>Address: 123 Street, City, Country</p>
+    </div>
+    <div class="social-icons">
+      <h3>Follow Us</h3>
+      <ul>
+        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        <!-- Add more social media icons as needed -->
+
+      </ul>
+    </div>
+  </div>
+</footer>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
