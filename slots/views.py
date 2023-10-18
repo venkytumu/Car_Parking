@@ -1,20 +1,22 @@
 from django.shortcuts import render, redirect, HttpResponse
-from .models import Slot, Booking,HistoricalBooking
+from .models import Slot, Booking,HistoricalBooking,Notification
 from django.contrib.auth.decorators import login_required
 import json
 from django.shortcuts import get_object_or_404
 from datetime import date,timedelta,timezone,datetime
 from django.contrib import messages
 from django.http import JsonResponse
+from django.contrib.auth.models import User
+
 
 present=date.today()
-def slot_list(request):
-    now = date.today()
-    max_slots_per_day = 10
-    for shift in range(1,3):
-        for i in range(5):
+def slot_list(request): 
+    now = date.today() #present date
+    max_slots_per_day = 10 
+    for shift in range(1,3): #intial shift-1
+        for i in range(5):   #number of days
             current_date = now + timedelta(days=i)
-            existing_slots = Slot.objects.filter(booking_date=current_date,shifts=shift)
+            existing_slots = Slot.objects.filter(booking_date=current_date,shifts=shift) #filter like where
             if existing_slots.count() < max_slots_per_day:
                 slots_to_create = max_slots_per_day - existing_slots.count()
                 for j in range(slots_to_create):
@@ -64,6 +66,9 @@ def book_slot(request):
             slot.is_available = False
         
             slot.save()
+            message = f"You have successfully booked the slot on {slot.booking_date} at {slot.slot_number}."
+
+            Notification.objects.create(recipient=user, message=message)
         
             return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
         
@@ -86,6 +91,7 @@ def cancel_slot(request, slot_id):
 
         # Delete the booking record
         booking.delete()
+        slot_canceled(instance=slot)
         # Redirect to user's bookings
         return redirect('user_bookings')
     else:
@@ -96,3 +102,47 @@ def booking_history(request):
   
     historical_bookings = HistoricalBooking.objects.all()
     return render(request, 'bookings_history.html', {'historical_bookings': historical_bookings})
+def slot_canceled( instance, **kwargs):
+    
+
+    slot_date = instance.booking_date.strftime("%Y-%m-%d")
+
+    slot_num = instance.slot_number
+
+   
+
+    message = f"The slot on {slot_date} at {slot_num} has been canceled and is available for booking."
+
+    recipients=User.objects.all()
+
+    for recipient in recipients:
+
+        Notification.objects.create(recipient=recipient, message=message)
+
+ 
+
+ 
+
+def list_notifications(request):
+
+    notifications = Notification.objects.filter(recipient=request.user)
+
+   
+
+    notification_data = [{'message': notification.message} for notification in notifications]
+
+ 
+
+    return JsonResponse({'notifications': notification_data})
+
+ 
+
+def mark_notification_as_read(request, notification_id):
+
+    notification = Notification.objects.get(id=notification_id)
+
+    notification.read = True
+
+    notification.save()
+
+    return redirect('list_notifications')

@@ -22,7 +22,9 @@ urlpatterns = [
     path("register",views.register,name="register"),
     path("login",views.login,name="login"),
     path("logout",views.logout,name="logout"),
-    path("resetlink",views.resetlink,name="resetlink")
+    path("resetlink",views.resetlink,name="resetlink"),
+    path("about",views.about,name="about"),
+
    
 
 ]

@@ -17,4 +17,7 @@ urlpatterns = [
 
     path("booking_history", views.booking_history, name='booking_history'),
     # path("logout",views.logout,name="logout")
+     path("list_notifications", views.list_notifications, name='list_notifications'),
+
+    path("mark_notification_as_read/<int:notification_id>/", views.mark_notification_as_read, name='mark_notification_as_read'),
 ]

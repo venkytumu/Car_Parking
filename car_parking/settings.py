@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-q(n%+41+-6edc&8szsmg^i-m9yr+-4+426!z!&(9xq=!x4(25r'
-SECRET_KEY=os.environ.get("SECRET_KEY")
+SECRET_KEY = 'django-insecure-q(n%+41+-6edc&8szsmg^i-m9yr+-4+426!z!&(9xq=!x4(25r'
+
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG=os.environ.get("DEBUG","FALSE").lower()=="true"
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+DEBUG = True
+
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -87,9 +86,8 @@ DATABASES = {
         'HOST':'localhost'
     }
 }
-database_url=os.environ.get("DATABASE_URL")
-DATABASES['default']=dj_database_url.parse(database_url)
-# postgres://car_parking1_user:hNX5MtWTvAMAJKQ7Hz5Ii4xJQK3jGsRD@dpg-ckholaa12bvs73fqp1p0-a.oregon-postgres.render.com/car_parking1
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -125,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-
+    
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'static')
 ]

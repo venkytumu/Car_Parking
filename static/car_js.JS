@@ -22,7 +22,48 @@ function showSlides() {
 
 $(document).ready(function() {
       console.log("Click event listener is active."); 
-    
+      $("#notification-trigger").click(function(e) {
+
+        e.preventDefault();
+
+        $.get("slots/list_notifications", function(response) {
+
+          // Update the dropdown content with the received data
+
+          var notification_data = response.notifications;
+
+          //console.log("hs ");
+
+          var notificationMenu = $("#notification-menu");
+
+          notificationMenu.empty();
+
+ 
+
+          for (var i = 0; i < notification_data.length; i++) {
+
+            var notificationMessage = notification_data[i].message;
+
+            var notificationItem = $("<li class='notifi'>").text(notificationMessage);
+
+            notificationMenu.append(notificationItem);
+
+        }
+
+
+          //$("#notification-menu").html(data);
+
+          // Show the dropdown
+
+         // console.log(data);
+
+         notificationMenu.toggle();
+
+          //console.log("uhgc gag a ");
+
+        });
+
+      });
       
       function hideDropdown() {
           console.log("Clicked or scrolled"); 
@@ -82,3 +123,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
   });
+
+  // Initialize the carousel when the document is ready
+  $(document).ready(function () {
+    $('#imageSlideshow').carousel();
+  });
+
+  // Move to the next slide
+  function nextSlide() {
+    $('#imageSlideshow').carousel('next');
+  }
+
+  // Move to the previous slide
+  function prevSlide() {
+    $('#imageSlideshow').carousel('prev');
+  }
+
+  // Auto-slide the carousel every 2 seconds (optional)
+  $('#imageSlideshow').carousel({
+    interval: 2000, // Auto-slide interval in milliseconds (2 seconds)
+  });
+
+
+
+
+

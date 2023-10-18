@@ -1,3 +1,21 @@
+.navbar-nav .nav-item {
+  padding-right: 10px;
+}
+/* 
+@media (max-width: 768px) {
+  .navbar-nav {
+      flex-direction: column;
+  }
+
+  .navbar-nav .nav-item {
+      padding-right: 0;
+      padding-bottom: 5px;
+  }
+
+  .navbar-toggler-icon {
+      color: #fff;
+  }
+} */
 nav{
     display: flex;
     flex-direction: row;
@@ -24,7 +42,36 @@ nav{
   #menu-close{
     display: none;
   }
-  
+  .nav-link{
+    color: white;
+  }
+  .nav-link:hover{
+    box-shadow:
+    0 0 80px white,
+    0 0 20px white,
+    0 0 10px white;
+    border-radius: 5px ;
+    padding: 7px;
+    box-sizing: border-box;
+    color: white;
+  }
+  .dropdown-menu a{
+    color: white;
+    background-color: red;
+  }
+
+  .dropdown-menu a:hover{
+    box-shadow:
+    0 0 80px white,
+    0 0 20px white,
+    0 0 10px white;
+    border-radius: 5px ;
+    padding: 7px;
+    box-sizing: border-box;
+    color: white;
+    background-color: red;
+
+  }
   nav .navigation ul{
     display: flex;
     justify-content: flex-end ;
@@ -33,6 +80,7 @@ nav{
   nav .navigation ul li{
     list-style: none;
     margin: 10px;
+    /* background-color: white; */
   }
   nav .navigation ul li a{
     text-decoration:none;
@@ -71,7 +119,7 @@ nav{
     color: rgb(5, 5, 5);
     font-size: 2.26rem;
     letter-spacing: 1px;
-    padding-top: 120px;
+    margin-bottom: 20px 0px 20px 0px;
     text-align: center;
     line-height: 25px;
   }
@@ -89,6 +137,18 @@ nav{
     color:red;
     /* background-color:#fff; 
   } */
+
+  #notification-menu{
+    display: flex;
+    align-items:flex-start;
+    flex-direction: column;
+    position: fixed;
+    top: 5rem;
+    /* right: 1rem; */
+    border-radius: 10px;
+    padding: 10px 3px 1px 10px;
+    background-color: rgb(255, 43, 43);
+  }
 li.hamburgericon{
     display: none;
 }
@@ -367,34 +427,40 @@ footer {
   /* Add more icon styles as needed for other social media platforms */
 .foot{
   margin-top: 30px;
-}  
+} 
+/* Mobile-specific styles */
+@media screen and (max-width: 600px) {
 
-/* Mobile Styles */
-@media (max-width: 768px) {
-  /* Adjust the layout for smaller screens */
   body {
-    font-size: 16px; /* Increase font size for better readability */
+    font-size: 14px; /* Reduced font size for better mobile readability */
   }
 
-  .mobile-menu {
-    display: block; /* Show the mobile menu icon */
+  .pre-hm {
+    padding: 10px; /* Added padding to the top section for spacing */
   }
 
   .topnav {
-    display: none; /* Hide the navigation links by default */
-    flex-direction: column; /* Stack links vertically */
+    display: none; /* Hides the navigation on mobile */
   }
 
-  /* Style the hamburger menu icon */
-  .mobile-menu i {
-    font-size: 24px;
-    cursor: pointer;
+  .tumu {
+    text-align: center; /* Center aligns the logo and navigation */
   }
 
-  /* Show the navigation links when the menu icon is clicked */
-  .topnav.show {
-    display: flex;
+  .LOGO {
+    margin-bottom: 10px; /* Adds space below the logo */
   }
 
-  /* Add additional mobile-specific styles here */
+  h2 {
+    font-size: 24px; /* Adjusted the font size for the heading */
+  }
+
+  .Sl_IMAGE {
+    padding: 10px; /* Added padding to the image section */
+  }
+
+  .mySlides {
+    max-width: 100%; /* Ensures images fit within the screen width */
+    height: auto; /* Maintains aspect ratio of images */
+  }
 }

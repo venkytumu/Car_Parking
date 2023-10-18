@@ -53,3 +53,5 @@ def logout(request):
 
 def resetlink(request):
     return render(request,'PasswordReset.html')
+def about(request):
+    return render(request,'about.html')

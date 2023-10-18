@@ -19,5 +19,13 @@ class HistoricalBooking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     slot = models.ForeignKey(Slot, on_delete=models.CASCADE) 
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
+
+class Notification(models.Model):
+
+    recipient = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    message = models.TextField()
+
+    read = models.BooleanField(default=False)
 

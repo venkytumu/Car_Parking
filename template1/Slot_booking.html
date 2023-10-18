@@ -207,7 +207,7 @@
     
         function fetchSlots(selectedDate,selectedshift) {
             
-            $.ajax({
+            $.ajax({ // getting dyamic data without page refresh
                 url: "{% url 'get_slots' %}",
                 method: "GET",
                 data: { selected_date: selectedDate,selected_shift:selectedshift },
