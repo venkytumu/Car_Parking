@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'import_export',
     'django_admin_logs',
     'Home.apps.HomeConfig',
-    'accounts.apps.AccountsConfig',
+    'accounts.apps.AccountConfig',
     'slots.apps.SlotsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
