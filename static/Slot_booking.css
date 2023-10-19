@@ -269,7 +269,7 @@ div.container.available_slots{
 
   margin-left: 10px;
 
-  
+  cursor: pointer;
 
 }
 input#selected-date.dateinput{
@@ -329,6 +329,10 @@ label.datename{
 }
 button.slot-button.available{
   margin-left: 10px;
+  border-radius: 10px;
+}
+button.slot-button.occupied{
+ 
   border-radius: 10px;
 }
 .Shift{

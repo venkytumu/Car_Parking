@@ -109,7 +109,7 @@
 
           <div class="LOGO">
 
-            <i class="fa-sharp fa-solid fa-p"></i>
+            <img src="{%static 'PRFT-img-logo.png'%}" alt="Perficient" style="width: 40px; height:40px; padding:5px; background:white; border-radius:2px ;">
 
 
           </div>
@@ -140,7 +140,7 @@
 
             <h2>LOGIN </h2>
 
-            <form action="login" method="post">
+            <form action="{%url 'login'%}" method="post">
                 {%csrf_token%}
                 <div class="user-box">
 
@@ -168,7 +168,7 @@
 
                 <a><input type="submit" ></a>
 
-                <a href="register">
+                <a href="{%url 'get_register'%}">
 
                     SIGNUP
 
