@@ -69,7 +69,7 @@ def book_slot(request):
         
             slot.save()
 
-            message = f"You have successfully booked the slot on {slot.booking_date} at {slot.slot_number}."
+            message = f"You have successfully booked the slot {slot.slot_number} on {slot.booking_date} and {slot.shifts} ."
             Notification.objects.create(recipient=user, message=message)
         
             return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
@@ -111,8 +111,9 @@ def slot_canceled( instance, **kwargs):
 
     slot_date = instance.booking_date.strftime("%Y-%m-%d")
     slot_num = instance.slot_number
+    slot_shift=instance.Shifts
     
-    message = f"The slot on {slot_date} at {slot_num} has been canceled and is available for booking."
+    message = f"On {slot_date}, slot number {slot_num} in shift number {slot_shift} has been canceled and is now available for booking."
     recipients=User.objects.all()
     for recipient in recipients:
         Notification.objects.create(recipient=recipient, message=message)

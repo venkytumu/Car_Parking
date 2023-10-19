@@ -17,7 +17,8 @@
       
           <div class="LOGO">
       
-            <i class="fa-sharp fa-solid fa-p "></i>
+            <img src="{%static 'PRFT-img-logo.png'%}" alt="Perficient" style="width: 50px; height:50px; padding:5px; background:white; border-radius:2px ;">
+    
       
         </div>
       
@@ -26,7 +27,7 @@
            <ul>
            
             <li><a class="hme" href="{% url 'index' %}">HOME</a></li>
-            <li><a class="abt" href="#">ABOUT</a></li>
+            <li><a class="abt" href="{% url 'about' %}">ABOUT</a></li>
               
             {%if user.is_authenticated %}
 

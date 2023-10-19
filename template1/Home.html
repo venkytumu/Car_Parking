@@ -27,7 +27,7 @@
         <ul class="topnav">
           
             <li><a class="hme" href="{% url 'index' %}" title="home">HOME</a></li>
-            <li><a class="abt" href="#" title="about">ABOUT</a></li>
+            <li><a class="abt" href="{% url 'about' %}" title="about">ABOUT</a></li>
               
             {%if user.is_authenticated %}
 

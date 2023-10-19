@@ -332,7 +332,7 @@ button.slot-button.available{
   border-radius: 10px;
 }
 button.slot-button.occupied{
- 
+  margin-left: 10px;
   border-radius: 10px;
 }
 .Shift{
