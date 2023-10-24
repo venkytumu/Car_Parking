@@ -7,7 +7,8 @@ from datetime import date,timedelta,timezone,datetime
 from django.contrib import messages
 from django.http import JsonResponse
 from django.contrib.auth.models import User
-
+from django.db import transaction
+from django.db.models import F
 
 present=date.today()
 def slot_list(request):
@@ -45,36 +46,35 @@ def get_slots(request):
 def book_slot(request):
     if request.method == 'POST':
         slot_id = request.POST.get('slotid')
-        slot = Slot.objects.get(id=slot_id)
         user = request.user
 
-        # Check if the slot is available
-        if not slot.is_available:
-            return HttpResponse(json.dumps({"message": "Slot is already booked."}), content_type="application/json", status=400)
-        
-        booked_slots = Booking.objects.filter(user=user, slot__booking_date=slot.booking_date)
-        if booked_slots.exists():
-            return HttpResponse(json.dumps({"message": "You have already booked a slot for this date."}), content_type="application/json", status=400)
+        with transaction.atomic():
+            # Lock the slot to prevent concurrent bookings
+            slot = Slot.objects.select_for_update().get(id=slot_id)
 
-        else:
+            # Check if the slot is available
+            if not slot.is_available:
+                return HttpResponse(json.dumps({"message": "Slot is already booked."}), content_type="application/json", status=400)
 
+            booked_slots = Booking.objects.filter(user=user, slot__booking_date=slot.booking_date)
+            if booked_slots.exists():
+                return HttpResponse(json.dumps({"message": "You have already booked a slot for this date."}), content_type="application/json", status=400)
 
-        # Create a booking record
-            Booking.objects.create(user=user, slot=slot,booking_date=slot.booking_date,slot_number=slot.slot_number,shifts=slot.shifts)
+            # Create a booking record
+            Booking.objects.create(user=user, slot=slot, booking_date=slot.booking_date, slot_number=slot.slot_number, shifts=slot.shifts)
 
-            HistoricalBooking.objects.create(user=user, slot=slot,booking_date=slot.booking_date,slot_number=slot.slot_number,shifts=slot.shifts)
+            HistoricalBooking.objects.create(user=user, slot=slot, booking_date=slot.booking_date, slot_number=slot.slot_number, shifts=slot.shifts)
 
-        # Mark the slot as selected
+            # Mark the slot as selected
             slot.is_available = False
-        
             slot.save()
 
-            message = f"You have successfully booked the slot {slot.slot_number} on {slot.booking_date} and {slot.shifts} ."
+            message = f"You have successfully booked the slot {slot.slot_number} on {slot.booking_date} and {slot.shifts}."
             Notification.objects.create(recipient=user, message=message)
-        
-            return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
-        
-    return render(request,"Home.html")  
+
+        return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
+
+    return render(request, "Home.html")
 
 def user_bookings(request):
     
@@ -87,19 +87,24 @@ def cancel_slot(request, slot_id):
     booking = Booking.objects.filter(user=request.user, slot=slot).first()
 
     if booking:
-        # Mark the slot as available
-        slot.is_available = True
-        slot.save()
+        with transaction.atomic():
+            # Lock the slot to prevent concurrent cancellation
+            slot = Slot.objects.select_for_update().get(id=slot_id)
 
-        # Delete the booking record
-        booking.delete()
+            # Mark the slot as available
+            slot.is_available = True
+            slot.save()
 
-        slot_canceled(instance=slot)
-        # Redirect to user's bookings
-        return redirect('user_bookings')
+            # Delete the booking record
+            booking.delete()
+
+            slot_canceled(instance=slot)
+            # Redirect to user's bookings
+            return redirect('user_bookings')
     else:
         # Handle the case where the booking doesn't exist or doesn't belong to the user
         return HttpResponse("Booking not found or does not belong to you.")
+
     
 def booking_history(request):
   
