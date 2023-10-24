@@ -46,46 +46,36 @@ def get_slots(request):
 def book_slot(request):
     if request.method == 'POST':
         slot_id = request.POST.get('slotid')
+        slot = Slot.objects.get(id=slot_id)
         user = request.user
 
-        # Lock the slot and set is_selected to True
-        try:
-            with transaction.atomic():
-                slot = Slot.objects.select_for_update().get(id=slot_id)
-                if slot.is_selected:
-                    return HttpResponse(json.dumps({"message": "Slot is already being booked by another user."}), content_type="application/json", status=400)
-                
-                # Set is_selected to True
-                slot.is_selected = True
-                slot.save()
+        # Check if the slot is available
+        if not slot.is_available:
+            return HttpResponse(json.dumps({"message": "Slot is already booked."}), content_type="application/json", status=400)
+        
+        booked_slots = Booking.objects.filter(user=user, slot__booking_date=slot.booking_date)
+        if booked_slots.exists():
+            return HttpResponse(json.dumps({"message": "You have already booked a slot for this date."}), content_type="application/json", status=400)
 
-                # Check if the slot is available
-                if not slot.is_available:
-                    return HttpResponse(json.dumps({"message": "Slot is already booked."}), content_type="application/json", status=400)
+        else:
 
-                booked_slots = Booking.objects.filter(user=user, slot__booking_date=slot.booking_date)
-                if booked_slots.exists():
-                    return HttpResponse(json.dumps({"message": "You have already booked a slot for this date."}), content_type="application/json", status=400)
 
-                # Create a booking record
-                Booking.objects.create(user=user, slot=slot, booking_date=slot.booking_date, slot_number=slot.slot_number, shifts=slot.shifts)
+        # Create a booking record
+            Booking.objects.create(user=user, slot=slot,booking_date=slot.booking_date,slot_number=slot.slot_number,shifts=slot.shifts)
 
-                HistoricalBooking.objects.create(user=user, slot=slot, booking_date=slot.booking_date, slot_number=slot.slot_number, shifts=slot.shifts)
+            HistoricalBooking.objects.create(user=user, slot=slot,booking_date=slot.booking_date,slot_number=slot.slot_number,shifts=slot.shifts)
 
-                # Mark the slot as selected
-                slot.is_available = False
-                slot.is_selected = False  # Reset is_selected
-                slot.save()
+        # Mark the slot as selected
+            slot.is_available = False
+        
+            slot.save()
 
-                message = f"You have successfully booked the slot {slot.slot_number} on {slot.booking_date} and {slot.shifts}."
-                Notification.objects.create(recipient=user, message=message)
-                return JsonResponse({"message": "Slot booked successfully."})
-        except Slot.DoesNotExist:
-            return HttpResponse(json.dumps({"message": "Slot not found."}), content_type="application/json", status=400)
-
-        # return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
-
-    return render(request, "Home.html")
+            message = f"You have successfully booked the slot {slot.slot_number} on {slot.booking_date} and {slot.shifts} ."
+            Notification.objects.create(recipient=user, message=message)
+        
+            return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
+        
+    return render(request,"Home.html")
 
 
 def user_bookings(request):
