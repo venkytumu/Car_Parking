@@ -79,11 +79,11 @@ def book_slot(request):
 
                 message = f"You have successfully booked the slot {slot.slot_number} on {slot.booking_date} and {slot.shifts}."
                 Notification.objects.create(recipient=user, message=message)
-
+                return JsonResponse({"message": "Slot booked successfully."})
         except Slot.DoesNotExist:
             return HttpResponse(json.dumps({"message": "Slot not found."}), content_type="application/json", status=400)
 
-        return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
+        # return HttpResponse(json.dumps({"message": "Slot booked successfully."}), content_type="application/json")
 
     return render(request, "Home.html")
 

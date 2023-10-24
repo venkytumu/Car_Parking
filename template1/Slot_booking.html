@@ -316,14 +316,13 @@
                                 alert(data.message);
                             window.location.href='{%url "index" %}';  
                             }
-                             if(data.message === "You have already booked a slot for this date."){
-                                alert(data.message);
+                            else {
+                                alert(data.message);  // Handle error messages
                             }
-                             
                             //window.history.back();                    
                          },
                         error: function () {
-                            alert("You have already booked a slot for this date.");
+                            alert("An error occurred during slot booking.");
                         },
                     });
                 } else {
