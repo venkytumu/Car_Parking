@@ -51,7 +51,7 @@ class SlotAdmin(admin.ModelAdmin):
 
         for slot in queryset:
 
-            Booking.objects.create(slot=slot, user=user, slot_number=slot.slot_number, shifts=slot.shifts)
+            Booking.objects.create(slot=slot, user=user, slot_number=slot.slot_number, shifts=slot.shifts,booking_date=slot.booking_date)
 
             # Update the selected slots to be booked
 
@@ -82,7 +82,7 @@ class BookingAdmin(admin.ModelAdmin):
     list_filter = ('user', 'slot_number', 'booking_date', 'shifts')
     def book_selected_slots(self, request, queryset):
         for slot in queryset:
-            Booking.objects.create(slot=slot, user=request.user, slot_number=slot.slot_number, shifts=slot.shifts)
+            Booking.objects.create(slot=slot, user=request.user, slot_number=slot.slot_number, shifts=slot.shifts,booking_date=slot.booking_date)
         queryset.update(is_selected=False, is_available=False)
     book_selected_slots.short_description = "Book selected slots"
 admin.site.register(Booking, BookingAdmin)
