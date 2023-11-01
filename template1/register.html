@@ -84,9 +84,8 @@
             <a class="navbar-brand" href="{% url 'index' %}">
                 <img src="{% static 'PRFT-img-logo.png' %}" alt="Perficient" class="logo bg-white p-1 rounded-3">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">        
+                    <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
@@ -142,7 +141,7 @@
         </div>
     </div>
  
-    <footer class="footer mt-5">
+    <footer class="footer mt-5" id="Footer">
            
         <div class="row">
             <div class="col-md-6">
@@ -167,6 +166,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script> -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>   
    <script src="{% static 'register.js' %}"></script>
    
 </body>

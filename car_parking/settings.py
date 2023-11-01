@@ -22,19 +22,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+#SECRET_KEY = os.environ.get("SECRET_KEY")
 
-#SECRET_KEY = 'django-insecure-q(n%+41+-6edc&8szsmg^i-m9yr+-4+426!z!&(9xq=!x4(25r'
+SECRET_KEY = 'django-insecure-q(n%+41+-6edc&8szsmg^i-m9yr+-4+426!z!&(9xq=!x4(25r'
 
 #'django-insecure-q(n%+41+-6edc&8szsmg^i-m9yr+-4+426!z!&(9xq=!x4(25r'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower() == "true"
+#DEBUG = os.environ.get("DEBUG","False").lower() == "true"
 
-#DEBUG= True
+DEBUG= True
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
-#ALLOWED_HOSTS=[]
+ALLOWED_HOSTS=[]
 
 # Application definition
 
@@ -116,9 +116,9 @@ DATABASES = {
 }
 
 database_url=os.environ.get("DATABASE_URL")
-DATABASES['default']=dj_database_url.parse(database_url)
+#DATABASES['default']=dj_database_url.parse(database_url)
 
-#DATABASES['default']=dj_database_url.parse("postgres://dep_2_user:jNmVEvoAz5kbgS4T8YlISif4wtxqzvyG@dpg-ckjagqglk5ic73dnee3g-a.oregon-postgres.render.com/dep_2")
+DATABASES['default']=dj_database_url.parse("postgres://dep_2_user:jNmVEvoAz5kbgS4T8YlISif4wtxqzvyG@dpg-ckjagqglk5ic73dnee3g-a.oregon-postgres.render.com/dep_2")
 
 #postgres://dep_2_user:jNmVEvoAz5kbgS4T8YlISif4wtxqzvyG@dpg-ckjagqglk5ic73dnee3g-a.oregon-postgres.render.com/dep_2
 # Password validation

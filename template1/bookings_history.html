@@ -387,6 +387,7 @@
     <tr>
         <th>S.No</th>
         <th>Slot Number</th>
+        <th>Shift</th>
         <th>Booking date</th>
         <th>Created At</th>
     </tr>
@@ -394,6 +395,7 @@
     <tr>
         <td></td>
         <td>{{ booking.slot.slot_number }}</td>
+        <td>{{ booking.slot.shifts }}</td>
         <td>{{ booking.slot.booking_date }}</td>
         <td>{{ booking.created_at }}</td>
     </tr>
@@ -405,7 +407,7 @@
  
    
 </table>
-<footer class="footer mt-5">
+<footer class="footer mt-5" id="Footer">
            
   <div class="row">
       <div class="col-md-6">
@@ -526,6 +528,6 @@
 }); 
 
 </script>
- 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>
