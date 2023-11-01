@@ -141,9 +141,18 @@ def mark_notification_as_read(request):
     
     return redirect('list_notifications')
 
+@login_required
 def get_unread_notification_count(request):
-    count = Notification.objects.filter(recipient=request.user, read=False).count()
-    return JsonResponse({'count': count})
+     
+    
+    # if request.user.is_authenticated:
+    #     count = Notification.objects.filter(recipient=request.user, read=False).count()
+    #     return JsonResponse({'notification_count': count})
+    # else:
+    #     # Handle unauthenticated user case, e.g., redirect to a login page or return an error response.
+    #     return JsonResponse({'error': 'User is not authenticated'})
+     count = Notification.objects.filter(recipient=request.user, read=False).count()
+     return JsonResponse({'count': count})
 
 def clear_all_notifications(request):
     Notification.objects.filter(recipient=request.user).delete()

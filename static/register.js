@@ -110,32 +110,37 @@ function validateForm() {
     return true;
 
 }
+const registrationForm = document.forms.registration_form;
+    registrationForm.onsubmit = validateForm;
+// let popup=document.getElementById("popup");
 
-let popup=document.getElementById("popup");
+// function openPopup(){
+//     popup.classList.add("open-popup");
+//     setTimeout(function () {
+//         console.log("uvbhvbvbw");
+//         closePopup();
+//       }, 5000);
+//   }
+//   function closePopup(){
+//     popup.classList.remove("open-popup");
+//     window.location.href="login";
+//   }
 
-function openPopup(){
-    popup.classList.add("open-popup");
-    setTimeout(function () {
-        console.log("uvbhvbvbw");
-        closePopup();
-      }, 5000);
-  }
-  function closePopup(){
-    popup.classList.remove("open-popup");
-    window.location.href="login";
-  }
+// document.querySelector('form[name="registration_form"]').addEventListener('submit', function (e) {
+//     const isFormValid = validateForm(); // Store the result of validateForm in a variable
 
-document.querySelector('form[name="registration_form"]').addEventListener('submit', function (e) {
-    const isFormValid = validateForm(); // Store the result of validateForm in a variable
-
-    if (!isFormValid) {
-        e.preventDefault(); // Prevent the form from submitting
-    }
+//     if (!isFormValid) {
+//         e.preventDefault(); // Prevent the form from submitting
+//     }
     
-    if (isFormValid) { // Check the stored variable for validation
-        // alert(`Hey ${FirstNameInput.value.trim()}, Your Signup is successfull`);
-        openPopup();
+//     if (isFormValid) { // Check the stored variable for validation
+//         // alert(`Hey ${FirstNameInput.value.trim()}, Your Signup is successfull`);
+//         openPopup();
 
-    }
+//     }
    
-});
+// });
+// JavaScript code to handle the response and display the popup
+
+  
+

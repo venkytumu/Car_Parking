@@ -5,92 +5,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'Slot_booking.css' %}">
+    <link rel="icon" href="{% static 'PRFT-img-logo.png' %}" type="image/x-icon">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'Slot_booking.css' %}">
     <title>Slot Booking</title>
-    {% load livereload_tags %}
+    <style>
+        .navbar-collapse{
+            flex-grow: 0;
+          }
+          .custom-navbar {
+            background-color: rgb(255, 43, 43);
+            box-shadow:2px 2px 10px rgba(0,0,0.15) ;
+          }
+        .nav-link{
+          color: rgb(255, 255, 255);
+          font-size: 16px;
+          font-weight: 500;
+          transition: 0.3s ease;
+          text-decoration: none;
+        }
+        .nav-link:hover{
+          background-color: transparent;
+          box-shadow:
+          0 0 80px white,
+          0 0 20px white,
+          0 0 10px white;
+      /*    position: block;*/
+          color: rgb(255,255 , 255);
+          border-radius: 5px ;
+          padding: 7px;
+          box-sizing: border-box;
+       
+        }
+        ul .ulelements li a{
+            text-decoration: none;
+            color:white;
+          }
+          ul .ulelements li{
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            text-decoration: none;
+          }
+          ul .ulelements li:hover{
+            background-color: transparent;
+            box-shadow:
+            0 0 80px white,
+            0 0 20px white,
+            0 0 10px white;
+        /*    position: block;*/
+            color: rgb(255,255 , 255);
+            border-radius: 5px ;
+            padding: 7px;
+            box-sizing: border-box;
+         
+          }
+          .dropdown-menu2 li a{
+            text-decoration: none;
+          }
+          .dropdown-menu2 li{
+            text-decoration: none;
+          }
+          div .container nav{
+            margin-right: 0%;
+          }
+          .notification-dropdown a i{
+            color: white;
+          }
+          .dropdown-menu ul{
+            display: flex;
+            align-items:flex-start;
+            flex-direction: column;
+            position: fixed;
+            top: 5rem;
+            right: 6rem;
+            border-radius: 10px;
+            padding: 10px 35px 1px 10px;
+            background-color: rgb(255, 43, 43);
+          }
+          
+          
+            .notification-count {
+              color: #ffffff;
+              text-align: top;
+              position: relative;
+              top: -13px;
+              right: 7px;
+            }
+            ul .listelements a{
+              margin-right: 10px;
+            }
+            .dropdown-menu2 ul li{
+              color: rgb(255, 255, 255);
+              font-size: 16px;
+              font-weight: 500;
+              transition: 0.3s ease;
+        
+            }
+            .dropdown-menu2 ul li:hover{
+              background-color: transparent;
+            box-shadow:
+            0 0 80px white,
+            0 0 20px white,
+            0 0 10px white;
+        /*    position: block;*/
+            color: rgb(255,255 , 255);
+            border-radius: 5px ;
+            margin: 3px;
+            padding: 7px;
+            box-sizing: border-box;
+            }
+            .ulelements li{
+              list-style: none;
+        
+            }
+            .dropdown-menu{
+              border: none;
+              background-color: rgb(255, 43, 43);
+            }
+        
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  .contact-details, .social-icons {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .contact-details h3, .social-icons h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-details p {
+    margin: 0;
+  }
+  
+  .social-icons ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .social-icons li {
+    margin: 0 10px;
+  }
+  
+  .social-icons a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+  }
+  
+  /* Font Awesome Icons Styles (assuming you're using Font Awesome) */
+  .fa-facebook:before {
+    content: "\f09a"; /* Facebook icon */
+  }
+  
+  .fa-twitter:before {
+    content: "\f099"; /* Twitter icon */
+  }
+  
+  .fa-instagram:before {
+    content: "\f16d"; /* Instagram icon */
+  }
+  
+  /* Add more icon styles as needed for other social media platforms */
+.foot{
+  margin-top: 30px;
+}  
 
-    {% livereload_script %}
+#notification-menu{
+display: flex;
+align-items:flex-start;
+flex-direction: column;
+position: fixed;
+top: 5rem;
+right: 1rem;
+border-radius: 10px;
+padding: 10px 35px 1px 10px;
+background-color: rgb(255, 43, 43);
+}
+
+ul.notification-list{
+  padding: 1px;
+  background: rgb(255, 43, 43);
+  border-radius: 5px;
+  flex-direction: column;
+  max-height: 200px; 
+  overflow-y: auto; 
+  display:block; 
+} 
+div#notification-menu.dropdown_menu{
+  width: 200px;
+  padding: 5px;
+  box-shadow: 2px 2px black;
+}
+li.noti{
+  color: white;
+  padding: 2px;
+  font-size: small;
+  background: tomato;
+  border-radius: 5px;
+  margin: 5px 10px;
+  display: block;
+}
+a#clear-notifications-btn{
+  font-size: 12px;
+  text-decoration: underline;
+  margin-left: 14px;
+}
+
+span.notification-count{
+  color: white;
+}
+small{
+  display: block;
+  text-align: center;
+}
+    </style>
+ 
 </head>
 <body>
-    <section class="pre-hm">
-
-        <nav class="tumu">
-      
-          <div class="LOGO">
-      
-            <img src="{%static 'PRFT-img-logo.png'%}" alt="Perficient" style="width: 50px; height:50px; padding:5px; background:white; border-radius:2px ;">
+    <div class="container mt-5">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top  custom-navbar py-3">
+          <div class="container nav">
+              <a class="navbar-brand" href="{% url 'index' %}">
+                  <img src="{% static 'PRFT-img-logo.png' %}" alt="Perficient" class="logo bg-white p-1 rounded-3">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="sidebar" >
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse order-lg-2" id="navbarNav">
+                  <ul class="navbar-nav ms-6">
+                    
+                      <li class="nav-item ms-auto listelements">
+                          <a class="nav-link" href="{% url 'index' %}">HOME</a>
+                      </li>
+                      <li class="nav-item ms-auto listelements">
+                          <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
+                      </li>
+                      {%if user.is_authenticated %}
+                      <li class="nav-item ms-auto pt-2 listelements">
+                        Hello, {{user.first_name}}
+                      </li>
+                      <li class="nav-item ms-auto listelements" >
+                        <a class="nav-link " href="#Footer" style="margin-left: 10px;">CONTACT</a>
+                      </li>
+                      <li class="nav-item ms-auto" id="profile-icon">
+                        <a class="nav-link" href="#" title="user Profile" >
+                          <img src="{% static 'user-icon.png' %}" alt="user Profile">
+                        </a>
+                        <div id="profile-dropdown" class="dropdown-menu" style="display: none;">
+                          <ul class="ddm-dis ulelements ">
+                            <li class=" mb-1"><a href="{% url 'booking_history' %}" title="booking History">Booking History</a></li>
+                            <li class=" mb-1"><a href="{% url 'user_bookings' %}" title="my Bookings">Active Bookings</a></li>
+                            <li class=" mb-1"><a href="{% url 'logout' %}" title="logout">Logout</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                    
+              <li class="notification-dropdown mt-2 ms-auto">
+                <a href="#" id="notification-trigger" title="notifications" ><i class="fa fa-bell fa-2x ms-3"></i></a>
+                <span class="notification-count"></span>
+                <div id="notification-menu" class="dropdown_menu" style="display: none;">
     
-      
-        </div>
-      
-          <div class="navigation">  
-      
-           <ul>
-           
-            <li><a class="hme" href="{% url 'index' %}">HOME</a></li>
-            <li><a class="abt" href="{% url 'about' %}">ABOUT</a></li>
-              
-            {%if user.is_authenticated %}
-
-            <li>Hello, {{user.first_name}}</li>
-            <!-- <li><a class="lgn" href="{% url 'logout' %}" >LOGOUT</a></li> -->
-            <li class="profile-icon" id="profile-icon">
-                <a href="#" title="user Profile">
-                    <img src="{% static 'user-icon.png' %}" alt="user Profile">
-                </a>
-                <div id="profile-dropdown"  class="dropdown-menu" style="display: none;">
-                    <ul class="ddm-dis" >
-                        <li><a href="{%url 'booking_history' %}" title="booking History">Booking History</a></li>
-                        <li><a href="{%url 'user_bookings' %}" title="my Bookings">Active Bookings</a></li>
-                        <li><a href="{%url 'logout'%}" title="logout">Logout</a></li>
-                    </ul>
+                  <ul class="notification-list"  style="display: block;">
+                    <!-- Notification items go here dynamically -->
+                  </ul>
+                  <hr>
+    
+                  <ul class="clear-notifications-item" >
+                    <li><a href="#" id="clear-notifications-btn">...Clear Notifications</a></li>
+                  </ul>
                 </div>
-            </li>
-            {%endif%}
-     
-          </ul>
-      
-          </div>
-      
-        </nav>
-      
-        </section>
-
-    <div class="container available_slots">
-        <h1>Available Slots</h1>
-
-        <small>(Please select date and shift to preveiw/make your bookings.The shift timings are Shift-1:(9:30 to 17:30) and shift-2:(18:00 to 02:00))</small><br><br>
-
-        <div class="row datesearch">
-
-          <form  id="search_slot" method="get">
-            {%csrf_token%}
-  
-          <div class="col-4 dateblock">  
-  
-              <label class="datename" for="selected-date"><b>Date</b></label>
-  
-              <input type="date" class="dateinput" id="selected-date" name="selected_date" min=""  required>
-
-              <select class="Shift" name="selected_shift" id="P_shifts">
-                <option value="1">Shift-1</option>
-                <option value="2">Shift-2</option>
+                <!-- <button id="clear-notifications-btn">Clear Notifications</button> -->
                 
-              </select>
+    
+              </li>
+                
+                {%else%}
+                <!-- <li><a class="lgn" href="account/login" >LOGIN</a></li> -->
+                <li class="nav-item ms-auto listelements">
+                  <a class="nav-link" href="#Footer">CONTACT</a>
+                </li>
+                <li class="nav-item ms-auto listelements">
+       
+                  <a class="nav-link" id="login-trigger" href="#" title="login">LOGIN</a>
+                </li>
+                <div id="login-dropdown" class="dropdown-menu2" style="display: none;">
+                  <ul class="list-unstyled text-white">
+                        <li><a href="accounts/login" title="user login" class="text-white login">User Login</a></li>
+                        <li><a href="admin/" title="admin login" class="text-white">Admin Login</a></li>
+                  </ul>
+                </div>
+                
+              {%endif%}
+                <!-- Add more navigation items as needed -->
+            </ul>
+        </div>
+    </div>
+    </nav>
+    </div>
+    <div class="container available_slots">
+      <h1 style="text-align: center; font-weight: 600;">Available Slots</h1>
 
-              <!-- <input onclick="submit_by_id()"  type="submit" class="submitbutton"> -->
-              <button  class="Show_slots_btn" onclick="submit_by_id()"  type="submit">Show Slots</button>
+      <small>(Please select date and shift to preveiw/make your bookings.The shift timings are Shift-1:(9:30 to 17:30) and shift-2:(18:00 to 02:00))</small><br>
+
+      <div class="row datesearch">
+
+        <form  id="search_slot" method="get">
+          {%csrf_token%}
+
+        <div class="col-12 dateblock" style="text-align: center;">  
+
+            <label class="datename" for="selected-date"><b>Date</b></label>
+
+            <input type="date" class="dateinput" id="selected-date" name="selected_date" min=""  required>
+
+            <select class="Shift" name="selected_shift" id="P_shifts">
+              <option value="1">Shift-1</option>
+              <option value="2">Shift-2</option>
               
-          </div>  
-  
-        </form>
+            </select>
 
-      </div>
+            <!-- <input onclick="submit_by_id()"  type="submit" class="submitbutton"> -->
+            <button  class="Show_slots_btn" onclick="submit_by_id()"  type="submit">Show Slots</button>
+            
+        </div>  
 
-         <div class="slots" style=" justify-content: space-around;
-         margin: 60px;" >
+      </form>
+
+    </div>
+
+         <div class="slots col-lg-7 col-md-7 col-8" style=" justify-content: space-around;
+         margin: 60px; margin-left: 20%;" >
            
         </div>
         <div id="Book_slots_btn" style="display: none;">
@@ -149,47 +415,28 @@
     </form>
 </div>
     </div>
-        <footer class="foot" id="foot1">
-
-            <div class="container">
-          
-              <div class="contact-details">
-          
-                <h3>Contact Us</h3>
-          
-                <p>Email: example@email.com</p>
-          
-                <p>Phone: +1 (123) 456-7890</p>
-          
-                <p>Address: 123 Street, City, Country</p>
-          
-              </div>
-          
-              <div class="social-icons">
-          
-                <h3>Follow Us</h3>
-          
-                <ul>
-          
-                  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-          
-                  <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          
-                  <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          
-                  <!-- Add more social media icons as needed -->
-             </ul>
-          
-              </div>
-          
-            </div>
-          
-           
-          
-          </footer>
     
+  <footer class="footer" style="margin-top: 148px;">
+           
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Contact Us</h4>
+            <p>Email: contact@example.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Follow Us</h4>
+            <ul class="list-inline social-icons">
+                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
+    </div>
    
 
+</footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
 
@@ -336,34 +583,119 @@
                 event.preventDefault();
             });
         
-            $(document).ready(function() {
-                console.log("Click event listener is active."); 
-              
-                
-                function hideDropdown() {
-                    console.log("Clicked or scrolled"); 
-                    $(".dropdown-menu").hide();
+           
+            function getCSRFToken() {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    if (cookie.startsWith('csrftoken=')) {
+                        return cookie.substring('csrftoken='.length, cookie.length);
+                    }
                 }
+                return '';
+              }
+              
+              $(document).ready(function() { 
+              
+                function updateNotificationCount() {
+                  // Fetch the unread notifications count from the server and update the count
+                  $.get("get_unread_notification_count", function(data) {
+                      var unreadNotificationsCount = data.count;
+                      $('.notification-count').text(unreadNotificationsCount);
+                  });
+                }
+               updateNotificationCount();
+                  $("#notification-trigger").click(function(e) {
+                      e.preventDefault();
+                      $.get("list_notifications", function(response) {
+                        // Update the dropdown content with the received data
+                        var notification_data = response.notifications;
+                        //console.log("hs ");
+                        var notificationList = $(".notification-list");
+                        notificationList.empty();
+              
+                        for (var i = 0; i < notification_data.length; i++) {
+                          var notificationMessage = notification_data[i].message;
+                          var notificationItem = $("<li class='noti' >").text(notificationMessage);
+                          notificationList.append(notificationItem);
+                      }
+                       $("#notification-menu").toggle();
+              
+                       markAllNotificationsAsRead();
+              
+                       updateNotificationCount();
+                        //console.log("uhgc gag a ");
+                      });
+                    });
+              
+                    $("#clear-notifications-btn").click(function(e) {
+              
+                      e.preventDefault();
+                      // Add logic here to clear notifications (e.g., make an AJAX request)
+                      var csrfToken = getCSRFToken();
+                      $.ajax({
+                          url: "clear_all_notifications",
+                          type: "POST",
+                          headers: { "X-CSRFToken": csrfToken },
+                          success: function() {
+                              // After clearing notifications, update the notification count
+                              updateNotificationCount();
+                              //$("#notification-menu").hide();
+                          }
+                      });
+                  });
+              
+                  function markAllNotificationsAsRead() {
+                    var csrfToken = getCSRFToken();
+                    $.ajax({
+                        url: "mark_notification_as_read",
+                        type: "POST",
+                        headers: { "X-CSRFToken": csrfToken },
+                        success: function() {
+                            // After marking all notifications as read, update the notification count
+                            updateNotificationCount();
+                        }
+                    });
+                }
+                function hideDropdown() {
+          
+                    $(".dropdown-menu").hide();
+                    $("#notification-menu").hide();
+                }
+               
+              //   $("#profile-icon").click(function(event) {
+              //       event.stopPropagation();          
+              //       $(".dropdown-menu").toggle();
+              //   });
+                
+              //   $(document).click(function() {
+              //       hideDropdown();
+              //   });
               
                 
-                $(".profile-icon").click(function(event) {
-                    event.stopPropagation(); 
-                    console.log("Clicked"); 
-                    
-                    $(".dropdown-menu").toggle();
-                });
-              
-                
-                $(document).click(function() {
-                    hideDropdown();
-                });
-              
-                
-                $(window).scroll(function() {
-                    hideDropdown();
-                });
-            });
-              
+              //   $(window).scroll(function() {
+              //       hideDropdown();
+              //   });
+          
+          
+              $("#profile-icon").click(function(event) {
+                  event.stopPropagation();
+                  $("#profile-dropdown").toggle();
+              });
+          
+              $(document).click(function(event) {
+                  if (!$(event.target).is("#profile-icon")) {
+                      hideDropdown();
+                  }
+              });
+          
+              $(window).scroll(function() {
+                  hideDropdown();
+              });
+          
+           
+          }); 
+            
 </script>
 
 </body>

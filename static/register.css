@@ -1,45 +1,5 @@
-nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow:2px 2px 10px rgba(0,0,0.15) ;
-    padding: 1vw 8vw;
-    
-    width: 85%;
-    background-color:rgb(255, 43, 43);
-    z-index: 100;
-  }
-  nav .navigation ul{
-    display: flex;
-    justify-content: flex-end ;
-    align-items: center;
-  }
-  nav .navigation ul li{
-    list-style: none;
-    margin: 10px;
-  }
-  nav .navigation ul li a{
-    text-decoration:none;
-    color: rgb(255, 255, 255);
-    font-size: 16px;
-    font-weight: 500;
-    transition: 0.3s ease;
-  }
-  nav .navigation ul li a:hover{
-    background-color: transparent;
-    box-shadow: 
-    0 0 80px white,
-    0 0 20px white,
-    0 0 10px white;
-/*    position: block;*/
-    border-radius: 5px ;
-    padding: 7px;
-      box-sizing: border-box;
-  }
-  nav .LOGO i{
-    color: #ffffff;
-  }
+
+
   body{
     width: 100%;
     height: 100%;
@@ -47,17 +7,7 @@ nav{
     font-family: sans-serif;
 }
 
-.main{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    padding: 1px;
-    margin-top: 100px;
-    background: rgb(255, 43, 43);
-    box-shadow: 0 0 5px rgba(97, 16, 16, 0.5),0 0 25px rgba(97, 16, 16, 0.5),0 0 50px rgba(97, 16, 16, 0.5),0 0 100px rgb(255, 0, 0);
-    border-radius: 10px;
-}
+
 /* Signup-specific styles */
 
 .signup-box {

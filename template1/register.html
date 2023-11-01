@@ -1,184 +1,174 @@
-{%load static%}
-
+{% load static %}
+ 
 <!DOCTYPE html>
-
 <html lang="en">
-
+ 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{% static 'PRFT-img-logo.png' %}" type="image/x-icon">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> <!-- Include Bootstrap CSS -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <title>Signup</title>
-
-    <link rel="stylesheet" href="{%static 'register.css' %}">
-
-</head>
-
-<body>
-
-    <section class="pre-hm">
-
-        <nav class="tumu">
-
-            <div class="LOGO">
-
-                <i class="fa-sharp fa-solid fa-p"></i>
-
-            </div>
-
-            <div class="navigation">
-
-                <ul>
-
-                    <li><a class="hme" href="{% url 'index' %}">HOME</a></li>
-
-                    <li><a class="abt" href="{% url 'about' %}">ABOUT</a></li>
-
-                    <li><a class="lgn" href="{% url 'login' %}">LOGIN</a></li>
-
-                    <li><a class="cnt" href="INDEX.HTML">CONTACT</a></li>
-
-                </ul>
-
-                <!-- <span class="fa fa-bars"></span> -->
-
-            </div>
-
-        </nav>
-
-    </section>
-
- 
-
-    <div class="main">
-
-        <div class="signup-box">
-
-            <h2>SIGNUP</h2>
-
-            <form action="register" method="post" name="registration_form">
-                {%csrf_token%}
-                <div class="user-box">
-
-                    <input type="text" name="first_name" required>
-
-                    <label>First Name</label>
-
-                </div>
-
-                <div class="user-box">
-
-                    <input type="text" name="last_name" required>
-
-                    <label>Last Name</label>
-
-                </div>
-
- 
-
-                <div class="user-box">
-
-                    <input type="text" name="username" required>
-
-                    <label>Username</label>
-
-                </div>
-
- 
-
-                <div class="user-box">
-
-                    <input type="email" name="email" required>
-
-                    <label>Email</label>
-
-                </div>
-
-                <div class="user-box">
-
-                    <input type="password" name="password1" class="pass" required>
-
-                    <label>Password</label>
-
-                </div>
-
-                <div class="user-box">
-
-                    <input type="password" name="password2" class="pass" required>
-
-                    <label>Confirm Password</label>
-
-                </div>
-
-                <input type="submit" name="sub">
-                
-
-
-            </form>
-          
+    <title>Signup-Page</title>
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <style>
+        .custom-navbar {
+            background-color: rgb(255, 43, 43);
+            box-shadow:2px 2px 10px rgba(0,0,0.15) ;
+        }
+        .nav-link {
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            background-color: transparent;
+            box-shadow:
+            0 0 80px white,
+            0 0 20px white,
+            0 0 10px white;
+            color: rgb(255, 255, 255);
+            border-radius: 5px;
+            padding: 7px;
+            box-sizing: border-box;
+        }
+        .button1 {
+            color: white;
+            background-color: rgb(255, 43, 43);
+            border: none;
+            margin: 3px;
+        }
+        .button1:hover {
+            background-color: transparent;
+            box-shadow:
+            0 0 80px white,
+            0 0 20px white,
+            0 0 10px white;
+            color: rgb(255, 255, 255);
+            border-radius: 5px;
+            padding: 7px;
+            box-sizing: border-box;
+        }
+        .main{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            padding: 1px;
+            margin-top: 100px;
+            background: rgb(255, 43, 43);
+            box-shadow: 0 0 5px rgba(97, 16, 16, 0.5),0 0 25px rgba(97, 16, 16, 0.5),0 0 50px rgba(97, 16, 16, 0.5),0 0 100px rgb(255, 0, 0);
+            border-radius: 10px;
+        }
+        .user-box{
+            box-shadow: none;
+            border: none;
+        }
+        .signup-box .user-box input:focus {
+            box-shadow: none;
+           
+        }
+        .signup-box{
+            background: rgb(255, 43, 43);
+        }
        
-    </div>
-    </div>
-    <div class="popup" id="popup">
-        <img src="{%static '404-tick.webp' %}">
-        <h2>Thank You!</h2>
-        <p>Your details has beensuccessfully submitted.</p>
-        
-</div>
-
-    <footer class="foot" id="foot1">
-
-        <div class="container">
-  
-          <div class="contact-details">
-  
-            <h3>Contact Us</h3>
-  
-            <p>Email: example@email.com</p>
-  
-            <p>Phone: +1 (123) 456-7890</p>
-  
-            <p>Address: 123 Street, City, Country</p>
-  
-          </div>
-  
-          <div class="social-icons">
-  
-            <h3>Follow Us</h3>
-  
-            <ul>
-  
-              <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-  
-              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-  
-              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-  
-              <!-- Add more social media icons as needed -->
-  
-     
-  
-            </ul>
-  
-          </div>
-  
-        </div>
-  
-     
-  
-      </footer>
-
-
-
-    <script src="{%static 'register.js' %}"></script>
-
+    </style>
+</head>
  
+<body>
+   
+        <nav class="navbar navbar-expand-lg  custom-navbar py-3">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'PRFT-img-logo.png' %}" alt="Perficient" class="logo bg-white p-1 rounded-3">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ms-auto">
+                        <a class="nav-link" href="{% url 'index' %}">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">LOGIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="INDEX.HTML">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+      
+    <div class="container mt-5 mb-5"> <!-- Ensure a minimum height for the container -->
+        <div class=" ">
+            <div class="signup-box">
+                <h2>SIGNUP</h2>
+                <form action="register" method="post" name="registration_form" class="needs-validation" id="register-form">
+                    {% csrf_token %}
+                    <div class="form-group user-box">
+                        <input type="text" name="first_name" class="form-control" required>
+                        <label for="first_name">First Name</label>
+                    </div>
+                    <div class="form-group user-box">
+                        <input type="text" name="last_name" class="form-control" required>
+                        <label for="last_name">Last Name</label>
+                    </div>
+                    <div class="form-group user-box">
+                        <input type="text" name="username" class="form-control" required>
+                        <label for="username">UserName</label>
+                    </div>
+                    <div class="form-group user-box">
+                        <input type="email" name="email" class="form-control" required>
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-group user-box">
+                        <input type="password" name="password1" class="form-control" required>
+                        <label for="password1">Password</label>
+                    </div>
+                    <div class="form-group user-box">
+                        <input type="password" name="password2" class="form-control" required>
+                        <label for="password2">Confirm Password</label>
+                    </div>
+                    <button type="submit" name="sub" class="btn btn-primary button1">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+ 
+    <footer class="footer mt-5">
+           
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Contact Us</h4>
+                <p>Email: contact@example.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
 
+            <div class="col-md-6">
+                <h4>Follow Us</h4>
+                <ul class="list-inline social-icons">
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+       
+   
+</footer>
+ 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+   <script src="{% static 'register.js' %}"></script>
+   
 </body>
-
+ 
 </html>

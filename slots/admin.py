@@ -8,6 +8,8 @@ from import_export.admin import ImportExportModelAdmin
 
 from django.contrib.auth.models import User  # Replace with your custom user model if applicable
 
+from .models import Notification
+from django.contrib.auth.models import User
 # from django.contrib.auth.models import UserAdmin
 
  
@@ -37,7 +39,7 @@ class SlotAdmin(admin.ModelAdmin):
 
     actions = ['book_selected_slots', 'release_selected_slots']
 
-    date_hierarchy= 'booking_date'
+    # date_hierarchy= 'booking_date'
 
     list_per_page = 20
 
@@ -69,6 +71,11 @@ class SlotAdmin(admin.ModelAdmin):
         slot_ids = queryset.values_list('id', flat=True)
         queryset.update(is_selected=False, is_available=True)
         Booking.objects.filter(slot_id__in=slot_ids).delete()
+        users=User.objects.all()
+        for user in users:
+            for slot in queryset:
+                message = f"Admin has released slot On {slot.booking_date}, slot number {slot.slot_number} and shift number {slot.shifts} and is now available for booking.."
+                Notification.objects.create(recipient=user, message=message)
 
     book_selected_slots.short_description = "Book selected slots"
 
@@ -98,3 +105,22 @@ class HistoricalBookingAdmin(ImportExportModelAdmin):
  
 
 admin.site.register(HistoricalBooking, HistoricalBookingAdmin)
+# @admin.action(description="Release selected slots")
+# def release_selected_slots(self, request, queryset):
+#     released_slot_ids = []
+#     for slot in queryset:
+#         # Mark the slot as available
+#         slot.is_available = True
+#         slot.save()
+ 
+#         # Create a notification for all users
+#         users = User.objects.all()
+#         for user in users:
+#             message = f"Admin has released slot {slot.slot_number}."
+#             Notification.objects.create(recipient=user, message=message)
+#             released_slot_ids.append(slot.slot_number)
+ 
+#     # Notify all users about the released slots
+#     self.message_user(
+#         request, f"{len(queryset)} slots released and notified to users: {', '.join(map(str, released_slot_ids))}"
+#     )
